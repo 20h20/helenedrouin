@@ -1,0 +1,63 @@
+/* -------------------------------
+BACK OFFICE COMPONENT
+------------------------------- */
+#poststuff {
+	#post-body-content{
+		.acfe-flexible-placeholder{
+			h1, h2, h3, h4, h5, h6{
+				font-family: 'Open Sans';
+			}
+			.cbo-title-1,
+			.cbo-title-1 h1, .cbo-title-1 h2, .cbo-title-1 h3, .cbo-title-1 h4{
+				font-size: 34px;
+				line-height: 36px;
+				text-align: center;
+				margin-bottom: 30px;
+				font-family: 'Open Sans';
+			}
+			.cbo-title-2
+			.cbo-title-2 h1, .cbo-title-2 h2, .cbo-title-2 h3, .cbo-title-2 h4{
+				font-size: 26px;
+				line-height: 28px;
+				text-transform: uppercase;
+				text-align: center;
+				font-family: 'Open Sans';
+			}
+			.cbo-hero{
+				.hero-picturelist{
+					position: absolute;
+
+					.picturelist-el{
+						height: 100%;
+					}
+				}
+			}
+		}
+	}
+}
+/* -------------------------------
+MEDIUM SCREENS
+------------------------------- */
+@media (min-width: $screen-md-min) {
+	#poststuff {
+		#post-body-content{
+			.acfe-flexible-placeholder{
+				.cbo-title-1,
+				.cbo-title-1 h1, .cbo-title-1 h2, .cbo-title-1 h3, .cbo-title-1 h4{
+					font-size: 56px;
+					line-height: 58px;
+				}
+				.cbo-title-2,
+				.cbo-title-2 h1, .cbo-title-2 h2, .cbo-title-2 h3, .cbo-title-2 h4{
+					font-size: 40px;
+					line-height: 42px;
+					text-align: center;
+				}
+				.wpcf7{
+					display: flex;
+					flex-wrap: wrap;
+				}
+			}
+		}
+	}
+}

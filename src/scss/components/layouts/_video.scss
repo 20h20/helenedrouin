@@ -1,0 +1,41 @@
+/* -------------------------------
+VIDEO PICTURE COMPONENT
+------------------------------- */
+.cbo-video{
+  .video-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .list-el{
+      width: 100%;
+      margin: 10px 0;
+
+      iframe{
+        width: 100%;
+      }
+    }
+  }
+}
+
+/* -------------------------------
+MEDIUM SCREENS
+------------------------------- */
+@media (min-width: $screen-md-min) {
+  .cbo-video{
+    .video-list{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+  
+      .list-el{
+        padding: 0 10px;
+        width: 50%;
+
+        iframe{
+          width: 100%;
+        }
+      }
+    }
+  }
+}

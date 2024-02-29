@@ -1,0 +1,92 @@
+/* -------------------------------
+TEXT PICTURE COMPONENT
+------------------------------- */
+.cbo-textpicture {
+  .textpicture-picture{
+    z-index: 2;
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+    position: relative;
+
+    .picture-inner{
+      padding-bottom: 70%;
+    }
+  }
+  .textpicture-text {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+/* -------------------------------
+MEDIUM SCREENS
+------------------------------- */
+@media (min-width: $screen-md-min) {
+  .cbo-textpicture {
+    .textpicture-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 50px;
+
+      &.content-cover{
+        align-items: initial;
+
+        .textpicture-picture {
+          .picture-inner{
+            height: 100%;
+          }
+        }
+      }
+    }
+    .textpicture-title{
+      width: 100%;
+    }
+    .textpicture-picture{
+      width: 50%;
+      max-width: inherit;
+      margin: 0;
+
+      .picture-inner{
+        padding-bottom: 0px;
+
+        &.picture--left{
+          img{
+            object-position: left;
+          }
+        }
+        &.picture--right{
+          img{
+            object-position: right;
+          }
+        }
+        &.cbo-picture-contain{
+          img{
+            position: relative;
+          }
+        }
+      }
+    }
+    &.textpicture--right {
+      .textpicture-content {
+        flex-direction: row-reverse;
+      }
+    }
+    .textpicture-text {
+      width: 45%;
+      max-width: inherit;
+      margin: 0;
+      padding: 40px 0;
+    }
+  }
+}
+/* -------------------------------
+LARGE SCREENS
+------------------------------- */
+@media (min-width: $screen-lg-min) {
+  .cbo-textpicture {
+    .textpicture-text {
+      padding: 80px 0;
+    }
+  }
+}

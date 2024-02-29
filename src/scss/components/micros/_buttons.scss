@@ -1,0 +1,37 @@
+/* -------------------------------
+BUTTONS MICRO COMPONENT
+------------------------------- */
+.cbo-button,
+input[type="submit"]{
+	text-transform: uppercase;
+	background: $colorpink;
+	color: $colorblack;
+	min-width: 240px;
+	width: fit-content;
+	border-radius: 99rem;
+	height: 60px;
+	font-size: 18px;
+	line-height: 18px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	cursor: pointer;
+	padding: 0 20px;
+	transition: all .4s;
+
+	&.button--mail{
+		position: relative;
+
+		&:before{
+			font-family:"icons";
+			content:"\f106";
+			display: block;
+			margin-right: 6px;
+		}
+	}
+	&:hover{
+		background: $colorblackdark !important;
+		color: $colorwhite;
+	}
+}

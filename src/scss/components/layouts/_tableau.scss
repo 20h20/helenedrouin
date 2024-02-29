@@ -1,0 +1,98 @@
+/* -------------------------------
+TABLEAU COMPONENT
+------------------------------- */
+.cbo-tableau{
+	position: relative;
+	padding-top: 50px;
+	padding-bottom: 50px;
+
+	.tableau-picture{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+	.tableau-content{
+		background: rgba($colorblack,.8);
+		padding: 30px 10px 10px 10px;
+		position: relative;
+		z-index: 2;
+		color: $colorwhite;
+		text-align: center;
+
+		.content-table{
+			width: 100%;
+			border-bottom: 1px solid $colorwhite;
+			border-right: 1px solid $colorwhite;
+
+			.table-row{
+				display: flex;
+
+				.table-col{
+					border-top: 1px solid $colorwhite;
+					border-left: 1px solid $colorwhite;
+					padding: 5px;
+					width: 100%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					hyphens: auto;
+
+					&:first-child{
+						max-width: 250px;
+					}
+				}
+			}
+		}
+	}
+}
+/* -------------------------------
+SMALL SCREENS
+------------------------------- */
+@media (min-width: $screen-sm-min) {
+	.cbo-tableau{
+		.tableau-content{
+			padding: 40px 20px 20px 20px;
+
+			.content-table{
+				.table-row{
+					display: flex;
+
+					.table-col{
+						padding: 10px;
+					}
+				}
+			}
+		}
+	}
+}
+/* -------------------------------
+MEDIUM SCREENS
+------------------------------- */
+@media (min-width: $screen-md-min) {
+	.cbo-tableau{
+		margin-top: 80px;
+		margin-bottom: 80px;
+		padding-top: 196px;
+		padding-bottom: 196px;
+
+		&:before,
+		&:after{
+		content: '';
+			background: $colorwhite;
+			position: absolute;
+			left: 0;
+			width: 100%;
+			height: 12vh;
+			transform: skewY(-3deg);
+		z-index: 2;
+		}
+		&:before{
+			top: -6vh;
+		}
+		&:after{
+			bottom: -6vh;
+		}
+	}
+}

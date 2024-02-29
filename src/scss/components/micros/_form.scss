@@ -1,0 +1,106 @@
+/* -------------------------------
+FORMS & FIELDS
+------------------------------- */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="tel"],
+input[type="password"],
+textarea,
+select{
+	background: rgba($colorpink, .4);
+	border: none;
+	border-radius: 5px;
+	height: 60px;
+	padding:0 16px;
+	width: 100%;
+	margin-bottom: 16px;
+	font-size: 16px;
+	font-style: italic;
+	box-shadow: 0px 0px 0px 0px $colorblackdark inset;
+	transition: all .4s;
+
+	&:focus{
+		box-shadow: 0px 0px 0px 2px $colorblackdark inset;
+	}
+}
+.screen-reader-response{
+	display: none;
+}
+.cbo-form,
+.wpcf7{
+	textarea{
+		height: 200px;
+		resize: none;
+		padding: 16px;
+		font-family: 'Open Sans';
+	}
+	input[type="submit"]{
+		margin-bottom: 16px;
+		max-width: inherit;
+		width: 100%;
+		background: $colorpink;
+		border: none;
+	}
+	small{
+		font-size: 12px;
+		line-height: 14px;
+		display: block;
+
+		a{
+			color: $colorpink;
+			text-decoration: underline;
+		}
+	}
+}
+.cbo-form,
+.wpcf7-form{
+	.wpcf7-not-valid-tip{
+		color: $colorerror;
+		font-size: 12px;
+	}
+	.wpcf7-not-valid{
+		box-shadow: 0 0 0 1px rgba($colorerror,1);
+	}
+	.wpcf7-response-output{
+		display: none;
+		text-align: center;
+		color: $colorwhite;
+		background: $colorerror;
+		border-color: none;
+		padding: 20px;
+		border-radius: 5px;
+		margin: 0;
+	}
+	&.invalid{
+		.wpcf7-response-output{
+			display: block;
+			margin-top: 20px;
+			width: 100%;
+		}
+		input.wpcf7-validates-as-required{
+			box-shadow: 0 0 0 1px rgba($colorerror,1);
+		}
+	}
+	&.sent{
+		.wpcf7-response-output{
+			display: block;
+			margin-top: 20px;
+			width: 100%;
+			background: $colorvalid;
+		}
+	}
+}
+/* -------------------------------
+SMALL SCREENS
+------------------------------- */
+@media (min-width: $screen-sm-min) {
+	.cbo-field{
+		width: 100%;
+		padding: 0 10px;
+
+		&.field--half{
+			width: 50%;
+		}
+	}
+}

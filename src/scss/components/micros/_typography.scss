@@ -1,0 +1,143 @@
+/* -------------------------------
+TYPOGRAPHY
+------------------------------- */
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/opensans/OpenSans-Bold.woff2') format('woff2'),
+        url('../fonts/opensans/OpenSans-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/opensans/OpenSans-Regular.woff2') format('woff2'),
+        url('../fonts/opensans/OpenSans-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+a{
+	text-decoration: none;
+}
+ul{
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+h1,h2,h3,h4,h5,h6{
+	font-family: 'Open Sans';
+	font-weight: normal;
+	margin-top: 0;
+}
+.cbo-title-1 ,
+.cbo-title-1 h1, .cbo-title-1 h2, .cbo-title-1 h3, .cbo-title-1 h4{
+	font-size: 34px;
+	line-height: 36px;
+	text-align: center;
+	margin-bottom: 30px;
+}
+.cbo-title-2,
+.cbo-title-2 h1, .cbo-title-2 h2, .cbo-title-2 h3, .cbo-title-2 h4{
+	font-size: 26px;
+	line-height: 28px;
+	text-transform: uppercase;
+	text-align: center;
+	margin-bottom: 30px;
+}
+.title--pink{
+	color: $colorpink;
+}
+.cbo-chapo{
+	text-align: center;
+	max-width: 680px;
+	margin: 0 auto 30px auto;
+}
+.cbo-cms{
+	h1,h2,h3,h4,h5{
+		margin: 40px 0 14px 0;
+
+		&:first-child{
+			margin-top: 0;
+		}
+	}
+	p{
+		margin: 14px 0;
+
+		&:last-child{
+			margin-bottom: 0;
+		}
+		&:first-child{
+			margin-top: 0;
+		}
+	}
+	ul{
+		li{
+			position: relative;
+			display: flex;
+			margin-bottom: 14px;
+
+			&:last-child{
+				padding-bottom: 0;
+			}
+			&:before{
+				font-family:"icons";
+				content: '\f102';
+				color: $colorpink;
+				position: relative;
+				margin-right: 6px;
+			}
+		}
+	}
+	a{
+		&:not(.cbo-button){
+			color: $colorblack;
+			text-decoration: underline;
+			transition: all .4s;
+
+			&:hover{
+				opacity: 0.7;
+			}
+		}
+	}
+	iframe{
+		margin: 0 auto;
+		display: block;
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+	img{
+		max-width: 100%;
+		height: auto;
+		margin: 0 auto;
+		margin-top: 30px;
+		display: block;
+		border-radius: 20px;
+		overflow: hidden;
+	}
+	blockquote{
+		margin: 0;
+		background: rgba($colorpink, .3);
+		border-radius: 5px;
+		padding: 10px;
+		margin-bottom: 30px;
+		text-align: center;
+		font-style: italic;
+		font-weight: bold;
+	}
+}
+/* -------------------------------
+MEDIUM SCREENS
+------------------------------- */
+@media (min-width: $screen-md-min){
+	.cbo-title-1,
+	.cbo-title-1 h1, .cbo-title-1 h2, .cbo-title-1 h3, .cbo-title-1 h4{
+		font-size: 56px;
+		line-height: 58px;
+	}
+	.cbo-title-2,
+	.cbo-title-2 h1, .cbo-title-2 h2, .cbo-title-2 h3, .cbo-title-2 h4{
+		font-size: 30px;
+		line-height: 32px;
+	}
+}

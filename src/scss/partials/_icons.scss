@@ -1,0 +1,33 @@
+// Custom template
+
+@font-face {
+    font-family:"icons";
+    src: url("../iconfont/icons.eot?4dafdb9f6b51022994c86fe5f18e026c");
+    src: url("../iconfont/icons.eot?4dafdb9f6b51022994c86fe5f18e026c#iefix") format("embedded-opentype"),
+		url("../iconfont/icons.woff?4dafdb9f6b51022994c86fe5f18e026c") format("woff"),
+		url("../iconfont/icons.ttf?4dafdb9f6b51022994c86fe5f18e026c") format("truetype"),
+		url("../iconfont/icons.svg?4dafdb9f6b51022994c86fe5f18e026c#icons") format("svg");
+    font-weight:normal;
+    font-style:normal;
+    }
+
+.icon {
+    font-family:"icons";
+    display:inline-block;
+    font-style:normal;
+    speak:none;
+    -webkit-font-smoothing:antialiased;
+    font-size:1em;
+    line-height:1em;
+    vertical-align:baseline;
+    }
+
+// Icons
+.icon--arrow-right:before { content:"\f101"; }
+.icon--check:before { content:"\f102"; }
+.icon--facebook:before { content:"\f103"; }
+.icon--instagram:before { content:"\f104"; }
+.icon--linkedin:before { content:"\f105"; }
+.icon--mail:before { content:"\f106"; }
+.icon--pin:before { content:"\f107"; }
+.icon--youtube:before { content:"\f108"; }

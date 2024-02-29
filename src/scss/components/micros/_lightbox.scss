@@ -1,0 +1,161 @@
+.fancybox-lock body {
+    overflow: hidden !important;
+}
+
+.fancybox-overlay {
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	display: none;
+	z-index: 8010;
+	width: 100% !important;
+    height: 100% !important;
+	background-color: rgba($colorblack, 0.7);
+	
+	&.fancybox-overlay-fixed {
+		position: fixed;
+	}
+	
+}
+
+.fancybox-wrap,
+.fancybox-skin,
+.fancybox-outer,
+.fancybox-inner,
+.fancybox-image,
+.fancybox-wrap iframe,
+.fancybox-wrap object,
+.fancybox-nav,
+.fancybox-nav span,
+.fancybox-tmp
+{
+	padding: 0;
+	margin: 0;
+	border: 0;
+	outline: none;
+	vertical-align: top;
+}
+
+.fancybox-outer, .fancybox-inner {
+	position: relative;
+}
+
+.fancybox-nav {
+	position: absolute;
+	top: 0;
+	width: 40%;
+	height: 100%;
+	cursor: pointer;
+	display: flex;
+    align-items: center;
+	
+	&.fancybox-prev,
+	&.fancybox-next{
+		
+		&:before{
+			content: "\f101";
+			font-family: icons;
+			font-size: 20px;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			background: $colorblack;
+			color: $colorwhite;
+			border: 2px solid $colorwhite;
+			position: absolute;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: .5s $easeinout;	
+		}
+		
+		&:hover{
+			&:before{
+				background: $colorwhite;
+				color: $colorblack;
+			}
+		}
+	}
+	
+	&.fancybox-prev {
+		left: 0;
+		
+		&:before{
+			transform: rotate(180deg);
+			left: 20px;
+		}
+		
+	}
+	
+	&.fancybox-next {
+		right: 0;
+		
+		&:before{
+			right: 20px;
+		}
+		
+	}
+	
+}
+.fancybox-close {
+	position: absolute;
+	top: 25px;
+	right: 25px;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: $colorblack;
+	border: 2px solid $colorwhite;
+	position: absolute;
+	cursor: pointer;
+	transition: .5s $easeinout;
+	
+	&:before,
+	&:after{
+		content: '';
+		display: block;
+		position: absolute;
+		width: 32px;
+		height: 3px;
+		border-radius: 1.5px;
+		background: $colorwhite;
+		top: 50%;
+		left: 50%;
+		margin-left: -16px;
+		margin-top: -1.5px;
+		transition: .5s $easeinout;		
+	}
+	&:before{
+		transform: rotate3d(0, 0, 1, 45deg);
+		transform-origin: 50% 50% 0px;
+	}
+	&:after{
+		transform: rotate3d(0, 0, 1, -45deg);
+		transform-origin: 50% 50% 0px;
+	}
+	&:hover{
+		background: $colorwhite;
+		&:before,
+		&:after{
+			background: $colorblack;
+		}
+	}
+}
+.fancybox-opened {
+	z-index: 8030;
+}
+.fancybox-inner {
+	overflow: hidden;
+}
+
+
+.fancybox-image, .fancybox-iframe {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.fancybox-image {
+	max-width: 100%;
+	max-height: 100%;
+}

@@ -1,0 +1,46 @@
+html {
+	min-height:100%;
+}
+body {
+	color: $colorblack;
+	font-weight: normal;
+	hyphens: auto;
+	font-size: 18px;
+	line-height: 26px;
+	width: 100%;
+	min-height: 100%;
+	text-rendering: geometricPrecision;
+	margin: 0;
+	hyphens: inherit;
+
+	&.body--menuopen{
+		overflow: hidden;
+	}
+	&:not(.wp-admin){
+		font-family:$fontprimary;
+	}
+	.acfe-flexible-placeholder{
+		font-family:$fontprimary;
+		font-size: 18px;
+		line-height: 26px;
+	}
+}
+*{
+	box-sizing: border-box;
+
+	&:focus {
+		outline:none;
+	}
+}
+button{
+	background: none;
+	border: none;
+}
+figure{
+	margin: 0;
+}
+.page-404{
+	text-align: center;
+
+	padding-top: 100px;
+}
