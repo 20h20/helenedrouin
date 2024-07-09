@@ -12,6 +12,7 @@ body {
 	text-rendering: geometricPrecision;
 	margin: 0;
 	hyphens: inherit;
+	background: red;
 
 	&.body--menuopen{
 		overflow: hidden;
