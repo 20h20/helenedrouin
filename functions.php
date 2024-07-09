@@ -102,7 +102,8 @@
 	/* ************************* */
 	add_filter( 'pll_custom_flag', 'pll_custom_flag', 10, 2 );
 	function pll_custom_flag( $flag, $code ) {
-		$flag['url']    = "https://helenedrouin.fr/wp-content/theme/helenedrouin/polylang/{$code}.png";
+		$theme_directory_uri = get_template_directory_uri();
+		$flag['url']    = "{$theme_directory_uri}/polylang/{$code}.png";
 		$flag['width']  = 30;
 		$flag['height'] = 30;
 		return $flag;
