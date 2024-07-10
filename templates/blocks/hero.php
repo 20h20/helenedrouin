@@ -12,7 +12,6 @@
 					src="<?php echo $picture['sizes']['small']; ?>"
 					srcset="<?php echo $picture['sizes']['small']; ?> 320w, <?php echo $picture['sizes']['xlarge']; ?> 768w, <?php echo $picture['sizes']['xlarge']; ?> 1024w"
 					alt="<?php echo $picture['alt']; ?>" sizes="100vw"
-					loading="lazy"
 					width="2000" height="2000"
 				>
 			</div>
@@ -27,7 +26,6 @@
 				decoding="async"
 				src="<?php bloginfo('template_directory'); ?>/library/img/logo-helenedrouin.png"
 				alt="Hélène Drouin" sizes="100vw"
-				loading="lazy"
 				width="250" height="148"
 				itemprop="logo"
 			>
