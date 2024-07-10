@@ -2,6 +2,7 @@
 /*include /libs/jquery.fancybox.js*/
 /*include /libs/slick.js*/
 /*include /libs/move.js*/
+/*include /libs/parallax.js*/
 
 var Master = {
     onready : function(){
@@ -15,7 +16,7 @@ var Master = {
 $(window).on( 'scroll', function(){
     Master.onscroll();
 });
-
+ 
 
 (function($) { 
 	var Master = {

@@ -26,7 +26,28 @@
 	<header role="banner" itemscope itemtype="http://schema.org/WPHeader">
 		<div class="header-inner">
 			<ul class="languages-switcher">
-				<?php pll_the_languages( array('show_flags' => 1,'show_names' => 0 ) );?>
+				<li class="current-lang">
+					<a href="#">
+						<img
+							decoding="async"
+							src="<?php bloginfo('template_directory'); ?>/library/img/fr.png"
+							alt="Laboratoire de Tribologie et Dynamique des systèmes" sizes="100vw"
+							loading="lazy"
+							width="30" height="30"
+						>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.helenedrouin.com/">
+						<img
+							decoding="async"
+							src="<?php bloginfo('template_directory'); ?>/library/img/en.png"
+							alt="Laboratoire de Tribologie et Dynamique des systèmes" sizes="100vw"
+							loading="lazy"
+							width="30" height="30"
+						>
+					</a>
+				</li>
 			</ul>
 
 			<button type="button" class="burger-menu" aria-label="Ouvrir la navigation principale">
@@ -36,18 +57,47 @@
 			</button>
 
 			<nav class="header-nav" role="navigation"  itemscope="" itemtype="http://schema.org/SiteNavigationElement">
-				<?php wp_nav_menu( array(
-					'container' => false,
-					'container_class' => '',
-					'menu_class' => 'cbo-menu',
-					'theme_location' => 'primary-menu',
-					'before' => '',
-					'after' => '',
-					'link_before' => '',
-					'link_after' => '',
-					'depth' => 0,
-					'fallback_cb' => ''
-				));?>
+				<div class="nav-container">
+					<?php wp_nav_menu( array(
+						'container' => false,
+						'container_class' => '',
+						'menu_class' => 'cbo-menu',
+						'theme_location' => 'primary-menu',
+						'before' => '',
+						'after' => '',
+						'link_before' => '',
+						'link_after' => '',
+						'depth' => 0,
+						'fallback_cb' => ''
+					));?>
+
+					<div class="header-socials">
+						<?php
+							if( have_rows('options_footersocials', 'option') ):
+							while( have_rows('options_footersocials', 'option') ): the_row();
+							$reseau	= get_sub_field('reseau');
+							$url	= get_sub_field('url');
+						?>
+							<a class="list-el slide-up" href="<?php echo $url ?>" target="_blank" title="Nos réseaux">
+								<?php if($reseau == 'facebook'): ?>
+									<i class="icon icon--facebook"></i>
+								<?php endif; ?>
+								<?php if($reseau == 'instagram'): ?>
+									<i class="icon icon--instagram"></i>
+								<?php endif; ?>
+								<?php if($reseau == 'linkedin'): ?>
+									<i class="icon icon--linkedin"></i>
+								<?php endif; ?>
+								<?php if($reseau == 'youtube'): ?>
+									<i class="icon icon--youtube"></i>
+								<?php endif; ?>
+							</a>
+						<?php
+							endwhile;
+							endif;
+						?>
+					</div>
+				</div>
 			</nav>
 		</div>
 	</header>
