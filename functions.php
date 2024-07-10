@@ -97,27 +97,4 @@
 	}
 	add_action('login_head', 'childtheme_custom_login');
 
-	/* ************************* */
-	/* CUSTOM FLAGS */
-	/* ************************* */
-	add_filter( 'pll_custom_flag', 'pll_custom_flag', 10, 2 );
-	function pll_custom_flag( $flag, $code ) {
-		$theme_directory_uri = get_template_directory_uri();
-		$flag['url']    = "{$theme_directory_uri}/polylang/{$code}.png";
-		$flag['width']  = 30;
-		$flag['height'] = 30;
-		return $flag;
-	}
-
-	/* ************************* */
-	/* TRANSLATE KEYS */
-	/* ************************* */
-	add_action('init', function() {
-		pll_register_string( 'footer', "Suivez-moi");
-
-		pll_register_string( 'error', "Erreur 404");
-		pll_register_string( 'error', "La page que vous recherchez n'existe pas.<br />Vous pouvez toujours revenir sur vos pas.");
-		pll_register_string( 'error', "Revenir à l'accueil");
-	});
-
 ?>

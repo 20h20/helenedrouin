@@ -26,7 +26,28 @@
 	<header role="banner" itemscope itemtype="http://schema.org/WPHeader">
 		<div class="header-inner">
 			<ul class="languages-switcher">
-				<?php pll_the_languages( array('show_flags' => 1,'show_names' => 0 ) );?>
+				<li class="current-lang">
+					<a href="#">
+						<img
+							decoding="async"
+							src="<?php bloginfo('template_directory'); ?>/library/img/fr.png"
+							alt="Laboratoire de Tribologie et Dynamique des systèmes" sizes="100vw"
+							loading="lazy"
+							width="30" height="30"
+						>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.helenedrouin.com/">
+						<img
+							decoding="async"
+							src="<?php bloginfo('template_directory'); ?>/library/img/en.png"
+							alt="Laboratoire de Tribologie et Dynamique des systèmes" sizes="100vw"
+							loading="lazy"
+							width="30" height="30"
+						>
+					</a>
+				</li>
 			</ul>
 
 			<button type="button" class="burger-menu" aria-label="Ouvrir la navigation principale">
