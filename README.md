@@ -9,6 +9,8 @@ Thème WP pour le site Applewood.
 
 
 # Prod
+- https://www.helenedrouin.fr/
+- Branche git : main (git push origin main)
 
 
 
