@@ -22,7 +22,7 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(''); ?> itemscope itemtype="http://schema.org/WebPage">
+<body <?php body_class('TOTO'); ?> itemscope itemtype="http://schema.org/WebPage">
 	<header role="banner" itemscope itemtype="http://schema.org/WPHeader">
 		<div class="header-inner">
 			<ul class="languages-switcher">
