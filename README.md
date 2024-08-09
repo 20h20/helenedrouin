@@ -2,6 +2,9 @@
 
 Thème WP pour le site https://www.helenedrouin.fr/.
 
+# Installation déploiement
+- Générer clés ssh
+- Clé privée à placer dans github > repo du projet > Settings > Secrets and Variables > New repository secret > À nommer DEPLOY_KEY_STAGING
 
 # Preprod
 - https://helenedrouin.julien-brochard.fr/

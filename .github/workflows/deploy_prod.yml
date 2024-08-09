@@ -21,7 +21,7 @@ jobs:
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY_PROD }}
         with: 
-          flags: '-avzr --delete'
+          flags: '-avzr --delete --timeout=60 --partial -e "ssh -o ServerAliveInterval=30"'
           options: '--exclude "src" --exclude ".git" --exclude "README.md" --exclude "package.json" --exclude "package-lock.json" --exclude "Gruntfile.js" --exclude "yarn.lock" --exclude ".github" --exclude "node_modules" --exclude ".gitignore"'
           src: '.'
           dest: 'djvjxpk@ftp.cluster029.hosting.ovh.net:/home/djvjxpk/www/wp-content/themes/helenedrouin'
