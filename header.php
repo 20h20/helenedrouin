@@ -20,7 +20,7 @@
 	<link rel="icon" type="image/png" sizes="96x96" href="<?php echo get_template_directory_uri(); ?>/library/img/fav/favicon-96x96.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_template_directory_uri(); ?>/library/img/fav/favicon-16x16.png">
 	<?php wp_head(); ?>
-</head>
+</head> 
 
 <body <?php body_class('TOTO'); ?> itemscope itemtype="http://schema.org/WebPage">
 	<header role="banner" itemscope itemtype="http://schema.org/WPHeader">
