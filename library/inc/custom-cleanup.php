@@ -5,7 +5,6 @@
 	add_filter( 'protected_title_format', 'cbo_remove_protected_text' );
 	add_filter( 'gallery_style', 'cbo_remove_gallery_style' );
 	add_filter( 'script_loader_tag', 'cbo_add_defer_attribute', 10, 2 );
-	add_action( 'wp_head', 'cbo_remove_wp_widget_recent_comments_style', 1 );
 	remove_filter('pre_term_description', 'wp_filter_kses');
 	remove_filter('term_description', 'wp_kses_data');
 
@@ -150,10 +149,6 @@
 	/* --------------------------
 	   CLEANUP PROCESS
 	-------------------------- */
-	// launching operation cleanup
-	add_action( 'init', 'bones_head_cleanup' );
-	// A better title
-	add_filter( 'wp_title', 'rw_title', 10, 3 );
 	// Remove WP version from RSS
 	add_filter( 'the_generator', 'cbo_remove_rss_version' );
 	// Remove pesky injected css for recent comments widget
