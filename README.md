@@ -1,10 +1,11 @@
 # Helene Drouin
 
-Thème WP pour le site Applewood.
+Thème WP pour le site https://www.helenedrouin.fr/.
 
 
 # Preprod
 - https://helenedrouin.julien-brochard.fr/
+- git add . / git commit -m '' / git push origin develop
 - Branche git : develop (git push origin develop)
 
 
