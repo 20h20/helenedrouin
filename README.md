@@ -1,6 +1,6 @@
 # Helene Drouin
 
-Thème WP pour le site Applewood.
+Thème WP pour le site https://www.helenedrouin.fr/.
 
 
 # Preprod
