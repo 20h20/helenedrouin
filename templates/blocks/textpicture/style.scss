@@ -1,0 +1,53 @@
+@import "../../../src/scss/partials/variables";
+
+/* -------------------------------
+TEXT PICTURE COMPONENT
+------------------------------- */
+.cbo-textpicture {
+  .textpicture-picture{
+    margin-bottom: 3rem;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: $bordersmall;
+    overflow: hidden;
+    border-right: 0.25rem solid $colorgold;
+    border-bottom: 0.25rem solid $colorgold;
+    box-shadow: 0.75rem 0.75rem 0rem rgba($colorgold,0.3);
+  }
+
+  .textpicture-content{
+    .content-title{
+      margin-bottom: 0.5rem;
+    }
+    .content-subtitle{
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+    }
+  }
+}
+
+/* -------------------------------
+SMALL SCREENS
+------------------------------- */
+@media (min-width: $screen-sm-min) {
+  .cbo-textpicture {
+    .textpicture-inner{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .textpicture-picture{
+      width: 33.333333%;
+      margin-bottom: 0;
+    }
+    .textpicture-content{
+      width: calc(66.666667% - 4rem);
+    }
+    &.textpicture--reverse{
+      .textpicture-inner{
+        flex-direction: row-reverse;
+      }
+    }
+  }
+}

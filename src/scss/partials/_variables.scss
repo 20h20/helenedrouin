@@ -1,16 +1,35 @@
-// Fonts
-$fontprimary: "Open Sans";
+// Font
+$fontprimary: "Cormorant Garamond";
+
+// Borders radius
+$bordersmall : 5px;
 
 // Colors
-$colorwhite  : #FFF;
-$colorblack  : #333;
-$colorpink  : #D9A8B7;
-$colorblackdark  : #000;
-$colorerror : #E84536;
-$colorvalid : #33CC78;
+$colorblack     : #000;
+$colorwhite     : #FFF;
+$colorbluedark    : #1f2937;
+$colorbluemedium    : #8aa7b8;
+$colorbluelight    : #eef2f4;
+$colorgold      : #C8A96A;
+$colorgoldmedium    : #D9C9AA;
+$colorgoldlight    : #C8A96A44;
+$colorgoldxlight    : #F9F7F4;
+$colorgrey      : #e5e7eb;
+$colorerror         : #f2133d;
+$colorsuccess   : #2AD895;
 
-// Ease
+
+// Colors for dashboard
+$dbcolorgreen : #2AD895;
+$dbcolorbluedark : #1a1c22;
+$dbcolorgreylight : #f0f0f1;
+$colorjb : #e08c81;
+$dbcolored : #EB4039;
+
+
+// Animations
 $easeinout : cubic-bezier(0.215, 0.600, 0.270, 0.995);
+
 
 //== Media queries breakpoints
 
@@ -36,7 +55,7 @@ $screen-lg-min: $screen-lg !default;
 $screen-lg-desktop: $screen-lg-min !default;
 
 // XLarge screen / wide desktop
-$screen-xl: 1600px !default;
+$screen-xl: 1680px !default;
 $screen-xl-min: $screen-xl !default;
 $screen-xl-desktop: $screen-xl-min !default;
 

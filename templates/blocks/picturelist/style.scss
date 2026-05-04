@@ -1,0 +1,84 @@
+@import "../../../src/scss/partials/variables";
+
+/* -------------------------------
+BLOCS PICTURE COMPONENT
+------------------------------- */
+.cbo-picturelist{
+	.picturelist-list{
+		.list-el{
+			margin: 2rem 0;
+			display: block;
+
+			.el-inner{
+				display: block;
+
+				.inner-picture{
+					aspect-ratio: 2/3;
+					width: 100%;
+					display: block;
+					border-radius: $bordersmall;
+					overflow: hidden;
+					border-right: 0.1875rem solid $colorgold;
+					border-bottom: 0.1875rem solid $colorgold;
+					margin-bottom: 1.5rem;
+					cursor: pointer;
+
+					img{
+						transition: all .4s cubic-bezier(.694,.048,.335,1);
+					}
+				}
+				.inner-content{
+					display: block;
+					text-align: center;
+					color: $colorbluemedium;
+
+					.content-title{
+						color: $colorbluedark;
+						display: block;
+					}
+					.content-subtitle{
+						display: block;
+						font-size: 1rem;
+						line-height: 1.5rem;
+					}
+					.content-date{
+						display: block;
+						font-size: 0.875rem;
+						line-height: 1.25rem;
+					}
+				}
+			}
+		}
+	}
+}
+/* -------------------------------
+SMALL SCREENS
+------------------------------- */
+@media (min-width: $screen-sm-min) {
+	.cbo-picturelist{
+		.picturelist-list{
+			margin: -2rem -1rem;
+			display: flex;
+			flex-wrap: wrap;
+
+			.list-el{
+				width: 33.3333%;
+				margin: 2rem 0;
+
+				.el-inner{
+					padding: 0 1rem;
+				}
+
+				&:hover{
+					.el-inner{
+						.inner-picture{
+							img{
+								transform: scale(1.2);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

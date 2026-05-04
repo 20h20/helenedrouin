@@ -1,0 +1,75 @@
+@import "../../../src/scss/partials/variables";
+
+/* -------------------------------
+BLOC PICTO BLOCK COMPONENT
+------------------------------- */
+.cbo-blocpicto{
+	position: relative;
+	text-align: center;
+
+	.blocpicto-list{
+		margin-top: 3.125rem;
+
+		.list-el{
+			margin: 2.5rem 0;
+
+			.el-inner{
+				.el-icon{
+					background: $colorbluelight;
+					width: 4rem;
+					height: 4rem;
+					border-radius: 99rem;
+					margin: 0 auto 1rem;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+
+					img{
+						position: relative;
+						max-width: 1.625rem;
+						max-height: 1.625rem;
+					}
+				}
+				.el-content{
+					margin-top: 0.5rem;
+				}
+			}
+		}
+	}
+}
+
+/* -------------------------------
+SMALL SCREENS
+------------------------------- */
+@media (min-width: $screen-sm-min){
+	.cbo-blocpicto{
+		.blocpicto-list{
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			margin: 2.1875rem -0.9375rem 0;
+
+			.list-el{
+				margin: 0.9375rem 0;
+				width: 33.3333%;
+
+				.el-inner{
+					padding: 0 0.9375rem;
+				}
+			}
+		}
+	}
+}
+
+/* -------------------------------
+MEDIUM SCREENS
+------------------------------- */
+@media (min-width: $screen-md-min){
+	.cbo-blocpicto{
+		.blocpicto-list{
+			.list-el{
+				width: 20%;
+			}
+		}
+	}
+}

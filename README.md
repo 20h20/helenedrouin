@@ -1,26 +1,22 @@
-# Helene Drouin
 
-Thème WP pour le site https://www.helenedrouin.fr/.
+# Installation du thème
 
-# Installation déploiement
-- Générer clés ssh
-- Clé privée à placer dans github > repo du projet > Settings > Secrets and Variables > New repository secret > À nommer DEPLOY_KEY_STAGING
-
-# Preprod
-- https://helenedrouin.julien-brochard.fr/
-- git add . / git commit -m '' / git push origin develop
-- Branche git : develop (git push origin develop)
+## Installation :
+- PHP version : `8.2`
+- Configure the `.env.local` file - For local installation and the `.env` for production installation
+- Then `sudo composer install` into the root
+- Into the theme folder : `nvm use v14.16.1` & `sudo npm i`
 
 
-# Prod
+## Develop :
+- `grunt watch`
+
+
+## Staging :
+- http://helenedrouin.julien-brochard.fr
+- to push to preproduction website : git branch > develop then git add ., git commit -m 'my commit', git push origin develop
+
+
+## Prod 
 - https://www.helenedrouin.fr/
-- Branche git : main (git push origin main)
 
-
-
-## Grunt :
-
-- Installer avec `npm i`
-- Développer avec `grunt watch`
-
-Si cela ne fonctionne pas : vérifier version nvm et utiliser celle compatible (ex : nvm use v14.16.1)

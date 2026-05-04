@@ -1,106 +1,234 @@
 /* -------------------------------
-FORMS & FIELDS
+FORM MICRO COMPONENT
 ------------------------------- */
-input[type="text"],
-input[type="email"],
-input[type="number"],
-input[type="tel"],
-input[type="password"],
-textarea,
-select{
-	background: rgba($colorpink, .4);
-	border: none;
-	border-radius: 5px;
-	height: 60px;
-	padding:0 16px;
-	width: 100%;
-	margin-bottom: 16px;
-	font-size: 16px;
-	font-style: italic;
-	box-shadow: 0px 0px 0px 0px $colorblackdark inset;
-	transition: all .4s;
+.cbo-form{
+	input:focus,
+	textarea:focus,
+	select:focus {
+		outline: none;
+		box-shadow: none;
+	}
+	form {
+		input[type="text"],
+		input[type="email"],
+		input[type="number"],
+		input[type="tel"],
+		input[type="password"],
+		input[type="date"],
+		select,
+		textarea {
+			font-family: $fontprimary;
+			border: none;
+			background: $colorwhite;
+			height: 3.125rem;
+			width: 100%;
+			font-size: 0.875rem;
+			font-weight: 300;
+			color: $colorbluedark;
+			border-bottom: 0.125rem solid $colorgrey;
+			transition: all 0.2s cubic-bezier(0.85, 0, 0.15, 1) 0s;
 
-	&:focus{
-		box-shadow: 0px 0px 0px 2px $colorblackdark inset;
-	}
-}
-.screen-reader-response{
-	display: none;
-}
-.cbo-form,
-.wpcf7{
-	textarea{
-		height: 200px;
-		resize: none;
-		padding: 16px;
-		font-family: 'Open Sans';
-	}
-	input[type="submit"]{
-		margin-bottom: 16px;
-		max-width: inherit;
-		width: 100%;
-		background: $colorpink;
-		border: none;
-	}
-	small{
-		font-size: 12px;
-		line-height: 14px;
-		display: block;
+			&:focus,
+			&.filled{
+				border-bottom: 0.125rem solid $colorbluemedium;
+			}
+			&.wpcf7-not-valid{
+				border: 0.0625rem solid $colorerror;
+			}
+			&::-webkit-input-placeholder {
+				color: $colorbluedark;
+				opacity: 1;
+			}
 
-		a{
-			color: $colorpink;
-			text-decoration: underline;
+			&::-moz-placeholder {
+				color: $colorbluedark !important;
+				opacity: 1 !important;
+			}
+
+			&:-ms-input-placeholder {
+				color: $colorbluedark;
+				opacity: 1;
+			}
+
+			&::placeholder {
+				color: $colorbluedark;
+			}
+		}
+		textarea {
+			resize: none;
+			height: 8.75rem;
+			padding: 0;
+			font-family: $fontprimary;
+			font-size: 0.875rem;
+			font-weight: 300;
+		}
+		
+		.hidden-fields-container{
+			display: none;
+		}
+		input[type="submit"]{
+			font-family: $fontprimary;
+			display: table;
+			margin: 1.875rem auto 0 auto;
+		}
+		.form-field{
+			margin-bottom: 0.875rem;
+			width: 100%;
+
+			.wpcf7-not-valid-tip{
+				font-size: 0.75rem;
+				color: $colorerror;
+			}
+			&.form-acceptance {
+				.field-inner{
+					display: flex;
+					flex-wrap: wrap;
+				}
+				.wpcf7-form-control-wrap{
+					order: 2;
+				}
+				input {
+					width: 0;
+					height: 0;
+					opacity: 0.00000001;
+					position: absolute;
+				}
+				label {
+					display: flex;
+					justify-content: flex-start;
+					position: relative;
+					position: relative;
+					cursor: pointer;
+					line-height: 0.875rem;
+
+					&:before {
+						content: "";
+						display: block;
+						width: 0.75rem;
+						min-width: 0.75rem;
+						height: 0.75rem;
+						border-radius: 0.125rem;
+						border: 0.0625rem solid $colorbluedark;
+						margin: 0 0.625rem 0 0.0625rem;
+						cursor: pointer;
+					}
+					&:after {
+						content: "";
+						display: block;
+						width: 0.5rem;
+						min-width: 0.5rem;
+						height: 0.5rem;
+						border-radius: 0.125rem;
+						background: $colorbluedark;
+						position: absolute;
+						top: 0.1875rem;
+						left: 0.25rem;
+						transform: scale(0);
+						transition: all 0.3s $easeinout;
+					}
+				}
+				&:not(.checked) label:hover {
+					&:after{
+						transform: scale(1);
+						opacity: 0.5;
+					}
+				}
+				.field-inner.checked label {
+					&:after {
+						transform: scale(1);
+					}
+				}
+			}
+		}
+		.wpcf7-response-output {
+			color: $colorwhite;
+			display:none;
+			width: 100%;
+			margin: 1.875rem auto 0 auto;
+			padding: 1rem;
+			font-size: 0.875rem;
+			border-radius: 0.3125rem;
+
+			&:before{
+				font-family:"icons";
+				margin-right: 0.625rem;
+			}
+		}
+
+		&.invalid{
+			.wpcf7-response-output {
+				background: rgba($colorerror, .2);
+				border-left: 0.1875rem solid $colorerror;
+				display: block;
+				color: $colorerror;
+
+				&:before{
+					content:"\f108";
+				}
+			}
+		}
+		&.sent{
+			.wpcf7-response-output {
+				background: rgba($colorsuccess, .6);
+				border-left: 0.1875rem solid $colorsuccess;
+				display: block;
+				color: $colorbluedark;
+
+				&:before{
+					content:"\f107";
+				}
+			}
+		}
+		&.submitting{
+			&:before {
+				z-index: 99;
+				content: "";
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 2.5rem;
+				height: 2.5rem;
+				margin: -1.25rem 0 0 -1.25rem;
+				border: 0.4375rem solid rgba($colorgold, 0.3);
+				border-top-color: $colorgold;
+				border-radius: 50%;
+				animation: spin 1s linear infinite;
+			}
+			.form-field{
+				opacity: .2;
+			}
+		}
+		@keyframes spin {
+			from { transform: rotate(0deg); }
+			to { transform: rotate(360deg); }
 		}
 	}
-}
-.cbo-form,
-.wpcf7-form{
-	.wpcf7-not-valid-tip{
-		color: $colorerror;
-		font-size: 12px;
-	}
-	.wpcf7-not-valid{
-		box-shadow: 0 0 0 1px rgba($colorerror,1);
-	}
-	.wpcf7-response-output{
+	.screen-reader-response{
 		display: none;
-		text-align: center;
-		color: $colorwhite;
-		background: $colorerror;
-		border-color: none;
-		padding: 20px;
-		border-radius: 5px;
-		margin: 0;
-	}
-	&.invalid{
-		.wpcf7-response-output{
-			display: block;
-			margin-top: 20px;
-			width: 100%;
-		}
-		input.wpcf7-validates-as-required{
-			box-shadow: 0 0 0 1px rgba($colorerror,1);
-		}
-	}
-	&.sent{
-		.wpcf7-response-output{
-			display: block;
-			margin-top: 20px;
-			width: 100%;
-			background: $colorvalid;
-		}
 	}
 }
+
 /* -------------------------------
 SMALL SCREENS
 ------------------------------- */
-@media (min-width: $screen-sm-min) {
-	.cbo-field{
-		width: 100%;
-		padding: 0 10px;
+@media (min-width: $screen-sm-min){
+	.cbo-form{
+		form{
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
 
-		&.field--half{
-			width: 50%;
+			.form-step{
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				width: 100%;
+			}
+			.form-field{
+				&.field-half{
+					width: 49%;
+				}
+			}
 		}
 	}
 }

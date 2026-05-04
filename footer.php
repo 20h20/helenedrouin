@@ -1,79 +1,46 @@
-		</div><!-- End main -->
+	</main>
 
-		<?php 
-			$picture	= get_field('options_footerpicture', 'option');
-			$locate	= get_field('options_footerlocalisation', 'option');
-		?>
-		<footer>
-			<div class="footer-infos">
-				<div class="strip-picture cbo-picture-cover">
-					<img
-						decoding="async"
-						src="<?php echo $picture['sizes']['small']; ?>"
-						srcset="<?php echo $picture['sizes']['small']; ?> 320w, <?php echo $picture['sizes']['xlarge']; ?> 768w, <?php echo $picture['sizes']['xlarge']; ?> 1024w"
-						alt="<?php echo $picture['alt']; ?>" sizes="100vw"
-						loading="lazy"
-						width="2000" height="1000"
-					>
-				</div>
-				<a class="infos-logo cbo-picture-contain slide-up" title="<?php echo get_bloginfo('description'); ?>" href="<?php echo home_url(); ?>">
-					<img
-						decoding="async"
-						src="<?php bloginfo('template_directory'); ?>/library/img/logo-helenedrouin.png"
-						alt="Laboratoire de Tribologie et Dynamique des systèmes" sizes="100vw"
-						loading="lazy"
-						width="250" height="148"
-						itemprop="logo"
-					>
-				</a>
-				<div class="infos-strip">
-					<div class="strip-content">
-						<div class="strip-locate slide-up">
-							<i class="icon icon--pin"></i>
-							<?php echo $locate ?>
-						</div>
+	<?php
+		$linkedin	= get_field('footer_linkedin', 'option');
+		$instagram	= get_field('footer_instagram', 'option');
+		$mail	= get_field('footer_mail', 'option');
+	?>
 
-						<div class="strip-sociallist">
-							<?php
-								if( have_rows('options_footersocials', 'option') ):
-								while( have_rows('options_footersocials', 'option') ): the_row();
-								$reseau	= get_sub_field('reseau');
-								$url	= get_sub_field('url');
-							?>
-								<a class="list-el slide-up" href="<?php echo $url ?>" target="_blank" title="Nos réseaux">
-									<?php if($reseau == 'facebook'): ?>
-										<i class="icon icon--facebook"></i>
-									<?php endif; ?>
-									<?php if($reseau == 'instagram'): ?>
-										<i class="icon icon--instagram"></i>
-									<?php endif; ?>
-									<?php if($reseau == 'linkedin'): ?>
-										<i class="icon icon--linkedin"></i>
-									<?php endif; ?>
-									<?php if($reseau == 'youtube'): ?>
-										<i class="icon icon--youtube"></i>
-									<?php endif; ?>
-								</a>
-							<?php
-								endwhile;
-								endif;
-							?>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="footer-bottom">
-				<nav>
+	<footer itemscope itemtype="https://schema.org/WPFooter" role="contentinfo">
+		<div class="footer-inner cbo-container container--padding container--nomargin" itemscope itemtype="https://schema.org/Person">
+			<meta itemprop="name" content="Hélène Drouin">
+			<a class="footer-logo" href="<?php echo esc_url( home_url('/') ); ?>" rel="home" aria-label="<?php pll_e('Hélène Drouin — Revenir à l\'accueil') ?>" itemprop="url">
+				© <?php echo date("Y"); ?> Hélène Drouin
+			</a>
+
+			<div class="footer-nav">
+				<nav aria-label="<?php pll_e('Navigation secondaire') ?>">
 					<?php wp_nav_menu( array(
 						'container' => false,
 						'container_class' => '',
-						'menu_class' => 'bottom-menu',
-						'theme_location' => 'secondary-menu',
+						'menu_class' => 'footer-menu',
+						'theme_location' => 'footer-nav',
 					));?>
 				</nav>
 			</div>
-		</footer>
-		<?php wp_footer(); ?>
-		<script defer="defer" src="<?php echo get_template_directory_uri(); ?>/library/js/scripts.js"></script>
-	</body>
+
+			<div class="footer-social">
+				<a class="social-el" href="<?php echo esc_url( $linkedin ); ?>" itemprop="sameAs" target="_blank" aria-label="<?php pll_e('Mon profil LinkedIn (nouvelle fenêtre)') ?>" rel="noopener noreferrer">
+					<i class="icon icon--linkedin" aria-hidden="true"></i>
+				</a>
+
+				<a class="social-el" href="<?php echo esc_url( $instagram ); ?>" itemprop="sameAs" target="_blank" aria-label="<?php pll_e('Mon compte Instagram (nouvelle fenêtre)') ?>" rel="noopener noreferrer">
+					<i class="icon icon--instagram" aria-hidden="true"></i>
+				</a>
+
+				<a class="social-el" href="<?php echo esc_url( 'mailto:' . $mail ); ?>" itemprop="email" aria-label="<?php pll_e('M\'envoyer un e-mail') ?>">
+					<i class="icon icon--mail" aria-hidden="true"></i>
+				</a>
+			</div>
+		</div>
+	</footer>
+
+	<script src="<?php echo get_template_directory_uri(); ?>/library/js/scripts.js"></script>
+	<?php wp_footer(); ?>
+</body>
 </html>

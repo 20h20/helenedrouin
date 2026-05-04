@@ -1,107 +1,70 @@
-<!DOCTYPE html>
+<!doctype html>
 <html <?php language_attributes(); ?>>
-<head>
-    <link rel="profile" href="http://gmpg.org/xfn/11">
-	<title><?php wp_title( '|', true, 'right' ); ?></title>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
-	<link rel="apple-touch-icon" sizes="57x57" href="<?php echo get_template_directory_uri(); ?>/library/img/fav/apple-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="<?php echo get_template_directory_uri(); ?>/library/img/fav/apple-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="<?php echo get_template_directory_uri(); ?>/library/img/fav/apple-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="<?php echo get_template_directory_uri(); ?>/library/img/fav/apple-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="<?php echo get_template_directory_uri(); ?>/library/img/fav/apple-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="<?php echo get_template_directory_uri(); ?>/library/img/fav/apple-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="<?php echo get_template_directory_uri(); ?>/library/img/fav/apple-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="<?php echo get_template_directory_uri(); ?>/library/img/fav/apple-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_template_directory_uri(); ?>/library/img/fav/apple-icon-180x180.png">
-	<link rel="icon" type="image/png" sizes="192x192"  href="<?php echo get_template_directory_uri(); ?>/library/img/fav/android-icon-192x192.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_template_directory_uri(); ?>/library/img/fav/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="<?php echo get_template_directory_uri(); ?>/library/img/fav/favicon-96x96.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_template_directory_uri(); ?>/library/img/fav/favicon-16x16.png">
-	<?php wp_head(); ?>
-</head> 
+	<head>
+		<meta charset="<?php bloginfo( 'charset' ); ?>">
+		<link rel="profile" href="http://gmpg.org/xfn/11">
+		<title><?php wp_title(' - '); ?></title>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+		
+		<?php $theme_uri = esc_url(get_template_directory_uri()); ?>
+		<link rel="apple-touch-icon" sizes="180x180" href="<?php echo $theme_uri; ?>/library/images/fav/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="<?php echo $theme_uri; ?>/library/images/fav/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="<?php echo $theme_uri; ?>/library/images/fav/favicon-16x16.png">
+		<?php wp_head(); ?>
+	</head>
 
-<body <?php body_class('TOTO'); ?> itemscope itemtype="http://schema.org/WebPage">
-	<header role="banner" itemscope itemtype="http://schema.org/WPHeader">
-		<div class="header-inner">
-			<ul class="languages-switcher">
-				<li class="current-lang">
-					<a href="#">
-						<img
-							decoding="async"
-							src="<?php bloginfo('template_directory'); ?>/library/img/fr.png"
-							alt="Laboratoire de Tribologie et Dynamique des systèmes" sizes="100vw"
-							loading="lazy"
-							width="30" height="30"
-						>
-					</a>
-				</li>
-				<li>
-					<a href="https://www.helenedrouin.com/">
-						<img
-							decoding="async"
-							src="<?php bloginfo('template_directory'); ?>/library/img/en.png"
-							alt="Laboratoire de Tribologie et Dynamique des systèmes" sizes="100vw"
-							loading="lazy"
-							width="30" height="30"
-						>
-					</a>
-				</li>
-			</ul>
+	<body <?php body_class('cbo-main'); ?> itemscope itemtype="http://schema.org/WebPage">
 
-			<button type="button" class="burger-menu" aria-label="Ouvrir la navigation principale">
-				<span class="top"></span>
-				<span class="middle"></span>
-				<span class="bottom"></span>
-			</button>
+		<header role="banner" itemscope itemtype="http://schema.org/WPHeader">
+			<div class="header-inner cbo-container container--nomargin">
+				<a
+					class="header-logo"
+					title="<?php pll_e('Accueil') ?> - <?php echo get_bloginfo('description'); ?>"
+					href="<?php echo home_url(); ?>"
+					itemprop="url"
+					rel="home"
+				>
+					Hélène Drouin
+				</a>
 
-			<nav class="header-nav" role="navigation"  itemscope="" itemtype="http://schema.org/SiteNavigationElement">
-				<div class="nav-container">
-					<?php wp_nav_menu( array(
-						'container' => false,
-						'container_class' => '',
-						'menu_class' => 'cbo-menu',
-						'theme_location' => 'primary-menu',
-						'before' => '',
-						'after' => '',
-						'link_before' => '',
-						'link_after' => '',
-						'depth' => 0,
-						'fallback_cb' => ''
-					));?>
+				<div class="header-content">
+					<nav
+						class="header-nav"
+						role="navigation"
+						itemscope
+						itemtype="http://schema.org/SiteNavigationElement"
+						aria-label="<?php esc_attr_e('Navigation principale', 'textdomain'); ?>"
+					>
+						<?php wp_nav_menu( array(
+							'container' => false,
+							'container_class' => 'nav-inner',
+							'menu_class' => '',
+							'theme_location' => 'main-nav',
+							'menu_id' => 'menu-principal',
+						)); ?>
+					</nav>
+					<button type="button" class="burger-menu" aria-label="<?php pll_e('Ouvrir la navigation principale') ?>">
+						<span class="top"></span>
+						<span class="middle"></span>
+						<span class="bottom"></span>
+					</button>
 
-					<div class="header-socials">
-						<?php
-							if( have_rows('options_footersocials', 'option') ):
-							while( have_rows('options_footersocials', 'option') ): the_row();
-							$reseau	= get_sub_field('reseau');
-							$url	= get_sub_field('url');
-						?>
-							<a class="list-el slide-up" href="<?php echo $url ?>" target="_blank" title="Nos réseaux">
-								<?php if($reseau == 'facebook'): ?>
-									<i class="icon icon--facebook"></i>
-								<?php endif; ?>
-								<?php if($reseau == 'instagram'): ?>
-									<i class="icon icon--instagram"></i>
-								<?php endif; ?>
-								<?php if($reseau == 'linkedin'): ?>
-									<i class="icon icon--linkedin"></i>
-								<?php endif; ?>
-								<?php if($reseau == 'youtube'): ?>
-									<i class="icon icon--youtube"></i>
-								<?php endif; ?>
-							</a>
-						<?php
-							endwhile;
-							endif;
-						?>
-					</div>
+					<?php
+						$languages = pll_the_languages([
+							'show_flags' => 0,
+							'show_names' => 1,
+							'echo'       => 0,
+						]);
+						if ($languages) :
+					?>
+						<nav class="languages-switcher" aria-label="<?php pll_e('Sélecteur de langue') ?>">
+							<?php echo wp_kses_post($languages); ?>
+						</nav>
+					<?php endif; ?>
 				</div>
-			</nav>
-		</div>
-	</header>
+			</div>
+		</header>
 
-	<div class="menu-overlay"></div>
-
-	<main class="cbo-main" role="main">
+		<main class="cbo-page" role="main" itemscope itemtype="http://schema.org/WebPageElement">

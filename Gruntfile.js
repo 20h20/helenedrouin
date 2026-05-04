@@ -2,57 +2,123 @@ module.exports = function (grunt) {
   require("time-grunt")(grunt);
   require("jit-grunt")(grunt);
 
+  
   grunt.initConfig({
-    /* Edit theme name here */
+    theme_name: "helenedrouin",
 
-    site_url: "http://localhost:8888/Helene-Drouin/",
-    theme_name: "heledrouin",
+    /* Chemin pour les blocks */
+    path_src_blocks: "templates/blocks/",
+    path_dist_blocks: "library/css/blocks/",
 
-    /* Do not edit below */
+    /* Chemin pour les parts */
+    path_src_parts: "templates/parts/",
+    path_dist_parts: "library/css/parts/",
 
+    /* Chemin pour les styles globaux */
+    path_src_styles: "src/scss/",
+    path_dist_styles: "library/css/",
+
+    /* Chemin pour les js et icons */
     path_src: "src/",
-    path_theme: "",
     path_dist: "library/",
-
     pkg: grunt.file.readJSON("package.json"),
 
-    /* Sass */
-
+    /* ------------------------ */
+    /*   SASS : Blocks & Parts  */
+    /* ------------------------ */
     sass: {
-      options: {
-        sourceMap: false,
-        outputStyle: "nested" // nested, compressed
+      blocks: {
+        expand: true,
+        cwd: "<%= path_src_blocks %>",
+        src: ["**/style.scss", "!style.scss"],
+        dest: "<%= path_dist_blocks %>",
+        rename: function (dest, src) {
+          var blockName = src.split("/")[src.split("/").length - 2];
+          return dest + blockName + ".min.css";
+        },
+        options: {
+          implementation: require('node-sass'),
+          sourceMap: false
+        }
       },
-      dist: {
-        files: {
-          "<%= path_dist %>css/style.css": "<%= path_src %>scss/style.scss",
-          "<%= path_dist %>css/editor-style.css":
-            "<%= path_src %>scss/editor-style.scss",
-          "<%= path_dist %>css/login-style.css":
-            "<%= path_src %>scss/login-style.scss",
-          "<%= path_dist %>css/style-landing.css":
-            "<%= path_src %>scss/style-landing.scss"
+
+      parts: {
+        expand: true,
+        cwd: "<%= path_src_parts %>",
+        src: ["**/style.scss", "!style.scss"],
+        dest: "<%= path_dist_parts %>",
+        rename: function (dest, src) {
+          var name = src.split("/")[src.split("/").length - 2];
+          return dest + name + ".min.css";
+        },
+        options: {
+          implementation: require("node-sass"),
+          sourceMap: false
+        }
+      },
+
+      admin: {
+        src: "<%= path_src_styles %>admin.scss",
+        dest: "<%= path_dist_styles %>admin.min.css",
+        options: { sourceMap: false }
+      },
+
+      global: {
+        src: "<%= path_src_styles %>style.scss",
+        dest: "<%= path_dist_styles %>style.min.css",
+        options: {
+          sourceMap: false,
         }
       }
     },
 
-    /* Css minification */
-
+    /* ------------------------ */
+    /*   POSTCSS : Blocks/Parts */
+    /* ------------------------ */
     postcss: {
       options: {
-        map: false, // inline sourcemaps
+        map: false,
         processors: [
-          require("autoprefixer")({ browsers: "last 3 versions" }), // add vendor prefixes
-          require("cssnano")() // minify the result
+          require("autoprefixer")({ overrideBrowserslist: "last 3 versions" }),
+          require("cssnano")()
         ]
       },
+
+      blocks: {
+        src: "<%= path_dist_blocks %>*.css"
+      },
+
+      parts: {
+        src: "<%= path_dist_parts %>*.css"
+      },
+
+      admin: {
+        src: "<%= path_dist_styles %>admin.min.css",
+        dest: "<%= path_dist_styles %>admin.min.css"
+      },
+
+      global: {
+        src: "<%= path_dist_styles %>style.min.css",
+        dest: "<%= path_dist_styles %>style.min.css"
+      }
+    },
+
+    /* ------------------------ */
+    /*    GUTENBERG MERGE CSS   */
+    /* ------------------------ */
+    concat: {
+      options: { separator: ";" },
+      gutenberg: {
+        src: ["<%= path_dist_blocks %>*.css"],
+        dest: "<%= path_dist_styles %>gutenberg.min.css"
+      },
       dist: {
-        src: "<%= path_dist %>css/*.css"
+        src: ["<%= path_src %>js/**/*.js"],
+        dest: "<%= path_dist %>js/scripts.js"
       }
     },
 
     /* Icons font */
-
     webfont: {
       icons: {
         src: "<%= path_src %>icons/*.svg",
@@ -70,9 +136,8 @@ module.exports = function (grunt) {
         }
       }
     },
-
+  
     /* Javascript Inclusions */
-
     include_file: {
       default_options: {
         cwd: "<%= path_src %>js/",
@@ -81,20 +146,7 @@ module.exports = function (grunt) {
       }
     },
 
-    /* Javascripts Concat */
-
-    concat: {
-      options: {
-        separator: ";"
-      },
-      dist: {
-        src: ["<%= path_src %>js/**/*.js"],
-        dest: "<%= path_dist %>js/scripts.js"
-      }
-    },
-
     /* Javascript Uglify */
-
     uglify: {
       app: {
         files: {
@@ -103,59 +155,74 @@ module.exports = function (grunt) {
       }
     },
 
-    /* Browser Sync */
-
-    browserSync: {
-      bsFiles: {
-        src: [
-          "<%= path_dist %>css/*.css",
-          "<%= path_dist %>js/*.js",
-          "<%= path_theme %>**/*.php"
-        ]
-      },
-      options: {
-        proxy: "<%= site_url %>",
-        watchTask: true
-      }
-    },
-
-    /* --------- Default Watch -------- */
-
+    /* ------------------------ */
+    /*       WATCH TASKS        */
+    /* ------------------------ */
     watch: {
-      options: {
-        spawn: false
-      },
+      options: { spawn: false },
+
       iconfont: {
         files: "<%= path_src %>icons/*.svg",
         tasks: ["webfont"]
       },
-      css: {
-        files: "<%= path_src %>scss/**/*.scss",
-        tasks: ["sass", "postcss"]
+
+      blocks: {
+        files: ["<%= path_src_blocks %>**/*.scss"],
+        tasks: ["sass:blocks", "postcss:blocks", "concat:gutenberg"]
       },
+
+      parts: {
+        files: ["<%= path_src_parts %>**/*.scss"],
+        tasks: ["sass:parts", "postcss:parts"]
+      },
+
+       admin: {
+        files: ["<%= path_src %>scss/components/micros/_back-office.scss"],
+        tasks: ["sass:admin", "postcss:admin"]
+      },
+
+      global: {
+        files: ["<%= path_src %>**/*.scss"],
+        tasks: ["sass:global", "postcss:global"]
+      },
+
       js: {
         files: "<%= path_src %>js/**/*.js",
         tasks: ["include_file", "uglify"]
       }
     }
+
   });
 
+  /* ------------------------ */
+  /*     LOAD TASKS           */
+  /* ------------------------ */
   grunt.loadNpmTasks("grunt-contrib-watch");
-  grunt.loadNpmTasks("grunt-browser-sync");
+  grunt.loadNpmTasks("grunt-contrib-concat");
+  grunt.loadNpmTasks("grunt-sass");
+  grunt.loadNpmTasks("grunt-postcss");
 
+  /* ------------------------ */
+  /*       DEFAULT            */
+  /* ------------------------ */
   grunt.registerTask("default", [
+    "sass:blocks", "sass:parts", "sass:global", "sass:admin",
+    "postcss:blocks", "postcss:parts", "postcss:global", "postcss:admin",
+    "concat:gutenberg",
     "webfont",
-    "sass",
-    "postcss",
     "include_file",
     "uglify",
-    "browserSync",
     "watch"
   ]);
+
+  /* ------------------------ */
+  /*        BUILD             */
+  /* ------------------------ */
   grunt.registerTask("build", [
+    "sass:blocks", "sass:parts", "sass:global",
+    "postcss:blocks", "postcss:parts", "postcss:global",
+    "concat:gutenberg",
     "webfont",
-    "sass",
-    "postcss",
     "include_file",
     "uglify"
   ]);

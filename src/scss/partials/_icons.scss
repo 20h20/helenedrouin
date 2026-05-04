@@ -2,13 +2,14 @@
 
 @font-face {
     font-family:"icons";
-    src: url("../iconfont/icons.eot?4dafdb9f6b51022994c86fe5f18e026c");
-    src: url("../iconfont/icons.eot?4dafdb9f6b51022994c86fe5f18e026c#iefix") format("embedded-opentype"),
-		url("../iconfont/icons.woff?4dafdb9f6b51022994c86fe5f18e026c") format("woff"),
-		url("../iconfont/icons.ttf?4dafdb9f6b51022994c86fe5f18e026c") format("truetype"),
-		url("../iconfont/icons.svg?4dafdb9f6b51022994c86fe5f18e026c#icons") format("svg");
+    src: url("../iconfont/icons.eot?d88588a07f75a1e6d77782e764062144");
+    src: url("../iconfont/icons.eot?d88588a07f75a1e6d77782e764062144#iefix") format("embedded-opentype"),
+		url("../iconfont/icons.woff?d88588a07f75a1e6d77782e764062144") format("woff"),
+		url("../iconfont/icons.ttf?d88588a07f75a1e6d77782e764062144") format("truetype"),
+		url("../iconfont/icons.svg?d88588a07f75a1e6d77782e764062144#icons") format("svg");
     font-weight:normal;
     font-style:normal;
+    font-display:swap;
     }
 
 .icon {
@@ -25,9 +26,11 @@
 // Icons
 .icon--arrow-right:before { content:"\f101"; }
 .icon--check:before { content:"\f102"; }
-.icon--facebook:before { content:"\f103"; }
-.icon--instagram:before { content:"\f104"; }
-.icon--linkedin:before { content:"\f105"; }
-.icon--mail:before { content:"\f106"; }
-.icon--pin:before { content:"\f107"; }
-.icon--youtube:before { content:"\f108"; }
+.icon--instagram:before { content:"\f103"; }
+.icon--linkedin:before { content:"\f104"; }
+.icon--mail:before { content:"\f105"; }
+.icon--pin:before { content:"\f106"; }
+.icon--player:before { content:"\f107"; }
+.icon--success:before { content:"\f108"; }
+.icon--warning:before { content:"\f109"; }
+.icon--youtube:before { content:"\f10a"; }

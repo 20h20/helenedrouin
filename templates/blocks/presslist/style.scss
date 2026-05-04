@@ -1,0 +1,21 @@
+@import "../../../src/scss/partials/variables";
+
+/* -------------------------------
+TEXT COMPONENT
+------------------------------- */
+.cbo-presslist{
+    .presslist-content{
+        text-align: center;
+        max-width: 48rem;
+        margin: 0 auto 2.125rem;
+
+        .content-title{
+            margin-bottom: 0.5rem;
+        }
+    }
+    .presslist-list{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}

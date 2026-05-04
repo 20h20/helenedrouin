@@ -1,37 +1,35 @@
 /* -------------------------------
 BUTTONS MICRO COMPONENT
 ------------------------------- */
-.cbo-button,
-input[type="submit"]{
-	text-transform: uppercase;
-	background: $colorpink;
-	color: $colorblack;
-	min-width: 240px;
-	width: fit-content;
-	border-radius: 99rem;
-	height: 60px;
-	font-size: 18px;
-	line-height: 18px;
+input[type="submit"],
+.cbo-button{
+	position: relative;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	position: relative;
+	color: $colorwhite;
+	background: $colorbluemedium;
+	padding: 0.5rem 1.875rem;
+	height: 3.75rem;
+	font-size: 1.125rem;
+	min-width: 12.5rem;
+	border-radius: $bordersmall;
+	border: none;
 	cursor: pointer;
-	padding: 0 20px;
-	transition: all .4s;
+	transition:all .2s cubic-bezier(.694,.048,.335,1);
 
-	&.button--mail{
-		position: relative;
-
-		&:before{
-			font-family:"icons";
-			content:"\f106";
-			display: block;
-			margin-right: 6px;
-		}
-	}
 	&:hover{
-		background: $colorblackdark !important;
-		color: $colorwhite;
+		box-shadow: 0 0 0 0.0625rem $colorbluemedium inset;
+		color: $colorbluemedium;
+		background: none;
+	}
+	&.button--gold{
+		background: $colorgold;
+
+		&:hover{
+			box-shadow: 0 0 0 0.0625rem $colorgold inset;
+			color: $colorgold;
+			background: none;
+		}
 	}
 }

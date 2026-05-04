@@ -2,139 +2,67 @@
 FOOTER COMPONENT
 ------------------------------- */
 footer{
-   .footer-infos{
-      text-align: center;
-      padding: 40px 20px;
-      position: relative;
+	background: $colorgoldmedium;
+	text-align: center;
+	
+	a{
+		color: $colorbluedark;
+	}
 
-      &:after{
-         content: '';
-         background: url(../img/frame-footer.png) no-repeat center top;
-         background-size: contain;
-         position: absolute;
-         top: -2px;
-         left: 0;
-         width: 100%;
-         height: 100%;
-      }
-      .infos-logo{
-         width: 218px;
-         height: 130px;
-         display: block;
-         margin: 0 auto 30px auto;
-         position: relative;
-         z-index: 2;
-      }
-      .strip-picture{
-         position: absolute;
-         width: 100%;
-         height: 100%;
-         top: 0;
-         left: 0;
-         opacity: .3;
-      }
-      .infos-strip{
-         position: relative;
-         z-index: 2;
-         color: $colorblackdark;
+	.footer-inner.cbo-container{
+		padding-top: 3rem;
+		padding-bottom: 3rem;
+	}
 
-         .strip-content{
-            .strip-locate{
-               i{
-                  margin-bottom: 6px;
-                  display: block;
-               }
-            }
-            .strip-sociallist{
-               margin-top: 20px;
-               display: flex;
-               flex-wrap: wrap;
-               justify-content: center;
+	.footer-logo{
+		margin-bottom: 1.875rem;
+		display: block;
+	}
+	.footer-social{
+		display: flex;
+		justify-content: center;
+		margin-top: 1.875rem;
 
-               .list-el{
-                  margin: 0 5px;
-                  padding: 4px;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  font-size: 14px;
-                  background: $colorblackdark;
-                  width: 24px;
-                  height: 24px;
-                  border-radius: 4px;
-                  color: $colorwhite;
-                  transition: all .4s;
-
-                  &:hover{
-                     background: $colorpink;
-                  }
-               }
-            }
-         }
-      }
-   }
-   .footer-bottom{
-      text-align: center;
-      background: $colorblackdark;
-      color: $colorwhite;
-      padding: 5px 20px;
-      font-size: 12px;
-
-      a{
-         color: $colorwhite;
-      }
-   }
+		.social-el{
+			margin: 0 0.625rem;
+		}
+	}
 }
+
 /* -------------------------------
 SMALL SCREENS
 ------------------------------- */
 @media (min-width: $screen-sm-min){
-   footer{
-      .footer-infos{
-         .infos-strip{
-            .strip-content{
-               max-width: 700px;
-               width: 40%;
-               margin: 80px auto 0 auto;
-               display: flex;
-               flex-wrap: wrap;
-               justify-content: space-between;
-               align-items: center;
+	footer{
+		text-align: inherit;
 
-               .strip-sociallist{
-                  margin-top: 0;
-               }
-            }
-         }
-      }
-      .footer-bottom{
-         nav{
-            ul{
-               display: flex;
-               justify-content: center;
+		.footer-inner.cbo-container{
+			display: flex;
+			justify-content: space-between;
+		}
 
-               li{
-                  margin: 0 10px;
-               }
-            }
-         }
-         a{
-            transition: all .4s;
+		.footer-logo{
+			margin-bottom: 0;
+		}
+		.footer-nav{
+			flex: 1;
+			padding: 0 1.25rem;
+			display: flex;
+			justify-content: center;
 
-            &:hover{
-               opacity: 0.7;
-            }
-         }
-      }
-   }
-}
-/* -------------------------------
-MEDIUM SCREENS
-------------------------------- */
-@media (min-width: $screen-md-min){
-   footer{
-      .footer-infos{
-         padding-top: 160px;
-      }
-   }
+			nav{
+				.footer-menu{
+					display: flex;
+
+					li{
+						margin: 0 0.625rem;
+					}
+				}
+			}
+		}
+		.footer-social{
+			justify-content: center;
+			margin-top: 0;
+		}
+	}
 }

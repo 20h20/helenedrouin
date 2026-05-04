@@ -1,0 +1,60 @@
+@import "../../../src/scss/partials/variables";
+
+/* -------------------------------
+VIDEO MICRO COMPONENT
+------------------------------- */
+.presslist-list{
+	.list-el{
+		width: 33.3333%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		.el-inner{
+			padding:1rem;
+			display: block;
+
+			.inner-picture{
+				display: block;
+
+				img{
+					position: relative;
+					max-height: 2.5rem;
+				}
+			}
+		}
+	}
+}
+
+/* -------------------------------
+SMALL SCREENS
+------------------------------- */
+@media (min-width: $screen-sm-min){
+	.presslist-list{
+		.list-el{
+			width: 25%;
+		}
+	}
+}
+
+/* -------------------------------
+MEDIUM SCREENS
+------------------------------- */
+@media (min-width: $screen-md-min){
+	.presslist-list{
+		.list-el{
+			.el-inner{
+				.inner-picture{
+					transition: all .4s cubic-bezier(.694,.048,.335,1);
+				}
+			}
+			&:hover{
+				.el-inner{
+					.inner-picture{
+						opacity: .6;
+					}
+				}
+			}
+		}
+	}
+}

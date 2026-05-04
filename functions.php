@@ -2,70 +2,37 @@
 	function bones_ahoy() {
 		require_once( 'library/inc/custom-cleanup.php' );
 		require_once( 'library/inc/custom-admin.php' );
+		require_once( 'library/inc/custom-dashboard.php' );
+		require_once( 'library/inc/styles-import.php' );
+		require_once( 'library/inc/acf.php' );
+		require_once( 'library/inc/custom-post/cpt-press.php' );
+		require_once( 'library/inc/custom-post/cpt-video.php' );
 	}
 	add_action( 'after_setup_theme', 'bones_ahoy' );
 
-	show_admin_bar(false);
-
-	/* ************************* */
-	// Register menu
-	/* ************************* */
-	function register_my_menu() {
-		register_nav_menu('primary-menu',__( 'Menu Principal' ));
-		register_nav_menu('secondary-menu',__( 'Menu pied de page' ));
-	}
-	add_action( 'init', 'register_my_menu' );
 
 	/* ************************* */
 	// Pic size
 	/* ************************* */
-	add_image_size('xsmall', 320, 320, false);
-	add_image_size('small', 768, 768, false);
-	add_image_size('medium', 1200, 1200, false);
-	add_image_size('xlarge', 1920, 1920, false);
+	add_action('after_setup_theme', function() {
+		add_image_size('xsmall', 320, 320, false);
+		add_image_size('small', 768, 768, false);
+		add_image_size('medium', 1200, 1200, false);
+		add_image_size('xlarge', 1920, 1920, false);
+	});
+
 
 	/* ************************* */
-	// Add `loading="lazy"` attribute to images output by the_post_thumbnail().
+	// Register menu
 	/* ************************* */
-	add_filter( 'post_thumbnail_html', 'wpdd_modify_post_thumbnail_html', 10, 5 );
-	
-	function wpdd_modify_post_thumbnail_html( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
-		return str_replace( '<img', '<img loading="lazy"', $html );
-	}
+	add_theme_support( 'menus' );
+	register_nav_menus(
+		array(
+			'main-nav' => 'Menu principal',  
+			'footer-nav' => 'Menu footer'
+		)
+	);
 
-	/* ************************* */
-	/* Add styles to wysiwyg editor */
-	/* ************************* */
-	function add_style_select_button($buttons) {
-		array_unshift($buttons, 'styleselect');
-		return $buttons;
-	}
-	add_filter('mce_buttons_2', 'add_style_select_button');
-	function my_mce_before_init_insert_formats( $init_array ) {
-		$style_formats = array(
-			array(
-				'title' => 'Bouton rose',
-				'block' => 'a',
-				'classes' => 'cbo-button',
-				'wrapper' => true,
-				'attributes' => array(
-					'href' => '#'
-				)
-			),
-			array(
-				'title' => 'Bouton rose + picto mail',
-				'block' => 'a',
-				'classes' => 'cbo-button button--mail',
-				'wrapper' => true,
-				'attributes' => array(
-					'href' => '#'
-				)
-			),
-		);
-		$init_array['style_formats'] = json_encode( $style_formats );
-		return $init_array;
-	}
-	add_filter( 'tiny_mce_before_init', 'my_mce_before_init_insert_formats' );
 
 	/* ************************* */
 	/* AJOUT OPTIONS AU DASHBOARD */
@@ -74,27 +41,109 @@
 		acf_add_options_page();
 	}	
 
+	
 	/* ************************* */
-	/* REMOVE P & SPAN FROM CF7 FIELD */
+	/* TinyMCE - Ajout styles personnalisés */
 	/* ************************* */
-	add_filter('wpcf7_autop_or_not', '__return_false');
-	add_filter('wpcf7_form_elements', function($content) {
-		$content = preg_replace('/<(span).*?class="\s*(?:.*\s)?wpcf7-form-control-wrap(?:\s[^"]+)?\s*"[^\>]*>(.*)<\/\1>/i', '\2', $content);
-		return $content;
-	});
+	function my_mce_before_init_insert_formats($init_array) {
+
+		$style_formats = [
+			[
+				'title'   => 'Texte souligné',
+				'inline'  => 'span',
+				'classes' => 'cbo-underline',
+			],
+			
+			[
+				'title'   => 'Bouton doré',
+				'classes' => 'cbo-button button--gold',
+				'block' => 'a',
+				'wrapper' => true,
+				'attributes' => array(
+					'href' => '#'
+				)
+			],
+			[
+				'title'   => 'Bouton bleu',
+				'classes' => 'cbo-button',
+				'block' => 'a',
+				'wrapper' => true,
+				'attributes' => array(
+					'href' => '#'
+				)
+			],
+		];
+		$init_array['style_formats'] = wp_json_encode($style_formats);
+		$init_array['block_formats'] = 'Paragraphe=p;Titre 2=h2;Titre 3=h3';
+		return $init_array;
+	}
+	add_filter('tiny_mce_before_init', 'my_mce_before_init_insert_formats');
+
 
 	/* ************************* */
-	/* DISABLE GUTEMBERG */
+	/* ACF - Custom toolbars */
 	/* ************************* */
-	add_filter('use_block_editor_for_post', '__return_false', 10);
-	add_filter('use_block_editor_for_post_type', '__return_false', 10);
+	function custom_acf_wysiwyg_toolbar($toolbars) {
+
+		// Toolbar minimaliste
+		$toolbars['Custom'] = [];
+		$toolbars['Custom'][1] = ['styleselect'];
+
+		// Toolbar avec styles personnalisés
+		$toolbars['Custom Light'] = [];
+		$toolbars['Custom Light'][1] = ['italic', 'styleselect', 'formatselect'];
+
+		return $toolbars;
+	}
+	add_filter('acf/fields/wysiwyg/toolbars', 'custom_acf_wysiwyg_toolbar');
+
+
+	/* ************************* */
+	/* TinyMCE - Activer styleselect */
+	/* ************************* */
+	function my_mce_buttons($buttons) {
+		array_unshift($buttons, 'styleselect');
+		return $buttons;
+	}
+	add_filter('mce_buttons', 'my_mce_buttons');
+
+
+	/* ************************* */
+	// Removing autoP from CF7
+	/* ************************* */
+	add_filter('wpcf7_autop_or_not', '__return_false');
+
 
 	/* ************************* */
 	/* CUSTOM LOGIN */
 	/* ************************* */
 	function childtheme_custom_login() {
-	 echo '<link rel="stylesheet" type="text/css" href="' . get_bloginfo('stylesheet_directory') . '/library/css/style.css" />';
+		echo '<link rel="stylesheet" type="text/css" href="' . get_bloginfo('stylesheet_directory') . '/library/css/style.min.css" />';
 	}
 	add_action('login_head', 'childtheme_custom_login');
 
+	/* ************************* */
+	/* TRANSLATE KEYS */
+	/* ************************* */
+	add_action('init', function() {
+		pll_register_string( '404', "Erreur 404");
+		pll_register_string( '404', "La page que vous rechechez n\'existe pas.<br />Vous pouvez toujours revenir sur vos pas.");
+		pll_register_string( '404', "Revenir à l\'accueil");
+
+		pll_register_string( 'article', "Voir l'article");
+		pll_register_string( 'article', "Voir la vidéo");
+
+		pll_register_string( 'general', "(nouvelle fenêtre)");
+
+		pll_register_string( 'footer', "Hélène Drouin — Revenir à l'accueil");
+		pll_register_string( 'footer', "Mon compte Instagram (nouvelle fenêtre)");
+		pll_register_string( 'footer', "Mon profil LinkedIn (nouvelle fenêtre)");
+		pll_register_string( 'footer', "M\'envoyer un e-mail");
+		pll_register_string( 'footer', "Navigation secondaire");
+
+
+		pll_register_string( 'header', "Accueil");
+		pll_register_string( 'header', "Ouvrir la navigation principale");
+		pll_register_string( 'header', "Sélecteur de langue");
+	});
 ?>

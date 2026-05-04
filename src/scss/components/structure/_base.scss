@@ -1,49 +1,98 @@
 html {
 	min-height:100%;
+	margin: 0 !important;
+
+	&.html--hidden{
+		overflow: hidden;
+	}
 }
-body {
-	color: $colorblack;
-	font-weight: normal;
-	hyphens: auto;
-	font-size: 18px;
-	line-height: 26px;
+body{
+	position: relative;
+	color:$colorbluedark;
+	font-family: $fontprimary;
+	font-style: normal;
 	width: 100%;
 	min-height: 100%;
+	font-size: 1rem;
+	line-height: 1.625rem;
 	text-rendering: geometricPrecision;
 	margin: 0;
 	hyphens: inherit;
 
-	&.body--menuopen{
+	&:after{
+		content: '';
+		position:fixed;
+		top: 0;
+		left: 0;
+		width:100%;
+		height:100%;
+		z-index:4;
+		opacity:0;
+		visibility:hidden;
+		pointer-events: none;
+		background-color:rgba($colorblack, 0);
+		transition:all .4s cubic-bezier(.694,.048,.335,1);
+	}
+	&.menu--open{
+		header {
+			.header-logo{
+				color: $colorbluedark;
+			}
+		}
+		&:after{
+			background-color:rgba($colorblack, 0.6);
+			opacity: 1;
+			visibility:visible;
+			backdrop-filter: blur(0.875rem);
+		}
+	}
+	&.body-noscroll{
 		overflow: hidden;
 	}
 	&:not(.wp-admin){
-		font-family:$fontprimary;
-	} 
-	.acfe-flexible-placeholder{
-		font-family:$fontprimary;
-		font-size: 18px;
-		line-height: 26px;
+		#wpadminbar{
+			top: inherit;
+			bottom: 0;
+			position: fixed;
+		}
 	}
 }
+
 *{
 	box-sizing: border-box;
-
-	&:focus {
-		outline:none;
-	}
 }
-button{
-	background: none;
-	border: none;
+
+.cbo--gold{
+    background: $colorgoldxlight;
+	position: relative;
+
+    &:after,
+    &:before{
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 0.0625rem;
+        background: linear-gradient(90deg, transparent, $colorgold, transparent);
+        opacity: 0.6;
+    }
+    &:after{
+        bottom: 0;
+	}
+    &:before{
+        top: 0;
+    }
 }
 figure{
 	margin: 0;
 }
 .page-404{
-	text-align: center;
-
-	padding-top: 100px;
+	.cbo-text{
+		text-align: center;
+	}
 }
-.grecaptcha-badge{
-	display: none;
+button{
+	background: none;
+	border: 0;
+	padding: 0;
 }

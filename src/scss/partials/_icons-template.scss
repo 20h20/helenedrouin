@@ -6,7 +6,7 @@
     src: <%= fontSrc2 %>;
     font-weight:normal;
     font-style:normal;
-    font-display: swap;
+    font-display:swap;
     }
 <% } %>
 <% if (baseStyles) { %>.icon {
@@ -18,7 +18,6 @@
     font-size:1em;
     line-height:1em;
     vertical-align:baseline;
-    font-display: swap;
     }
 <% } %>
 <% if (iconsStyles) { %>/* Icons */<% for (var glyphIdx = 0; glyphIdx < glyphs.length; glyphIdx++) { %>

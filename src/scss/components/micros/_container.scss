@@ -2,37 +2,36 @@
 CONTAINER MICRO COMPONENT
 ------------------------------- */
 .cbo-container {
-  margin: 50px auto;
-  padding: 0 20px;
+  margin: 3.75rem auto;
+  max-width: 80rem;
+  padding: 0 1.5rem;
   position: relative;
   width: 100%;
-  max-width: 1492px;
 
-  &.container--full{
-    max-width: inherit;
-  }
-  &.container--medium{
-    max-width: 1266px;
-  }
   &.container--nomargin{
     margin: 0 auto;
   }
-}
-/* -------------------------------
-SMALL SCREENS
-------------------------------- */
-@media (min-width: $screen-sm-min) {
-  .cbo-container {
-    padding-left: 4%;
-    padding-right: 4%;
+  &.container--padding {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 4.375rem;
+    padding-bottom:4.375rem;
+  }
+  &.container--small{
+    max-width: 51rem;
   }
 }
+
 /* -------------------------------
 MEDIUM SCREENS
 ------------------------------- */
 @media (min-width: $screen-md-min) {
   .cbo-container {
-    margin: 100px auto;
-    padding: 0 4%;
+    margin: 7rem auto;
+
+    &.container--padding {
+      padding-top: 7rem;
+      padding-bottom: 7rem;
+    }
   }
 }

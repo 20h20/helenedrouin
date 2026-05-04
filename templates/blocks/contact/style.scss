@@ -1,0 +1,35 @@
+@import "../../../src/scss/partials/variables";
+
+/* -------------------------------
+CONTACT BLOCK COMPONENT
+------------------------------- */
+.cbo-contact{
+	background: $colorgoldxlight;
+
+	.contact-content{
+		text-align: center;
+
+		.content-title {
+			margin-bottom: 1rem;
+		}
+	}
+	.contact-form {
+		border-right: 0.25rem solid $colorbluemedium;
+		border-bottom: 0.25rem solid $colorbluemedium;
+		margin-top: 3.125rem;
+		padding: 1.25rem;
+		border-radius: $bordersmall;
+		background: $colorwhite;
+	}
+}
+
+/* -------------------------------
+MEDIUM SCREENS
+------------------------------- */
+@media (min-width: $screen-md-min){
+	.cbo-contact{
+		.contact-form {
+			padding: 3rem;
+		}
+	}
+}

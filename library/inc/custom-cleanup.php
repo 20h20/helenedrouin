@@ -5,6 +5,7 @@
 	add_filter( 'protected_title_format', 'cbo_remove_protected_text' );
 	add_filter( 'gallery_style', 'cbo_remove_gallery_style' );
 	add_filter( 'script_loader_tag', 'cbo_add_defer_attribute', 10, 2 );
+
 	remove_filter('pre_term_description', 'wp_filter_kses');
 	remove_filter('term_description', 'wp_kses_data');
 
@@ -20,9 +21,9 @@
 		remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 		remove_action( 'wp_print_styles', 'print_emoji_styles' );
 		remove_action( 'admin_print_styles', 'print_emoji_styles' );
+		add_filter( 'wp_head', 'bones_remove_wp_widget_recent_comments_style', 1 );
 		add_filter( 'wp_title', 'cbo_head_title', 10, 3 );
 	}
-	
 
 	/* Nettoyage titre et meta description */
 	function cbo_head_title( $title, $sep, $seplocation ){
@@ -68,40 +69,16 @@
 		}
 	}
 
-	// remove injected CSS from recent comments widget
-	function bones_remove_recent_comments_style() {
-		global $wp_widget_factory;
-		if (isset($wp_widget_factory->widgets['WP_Widget_Recent_Comments'])) {
-			remove_action( 'wp_head', array($wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style') );
-		}
-	}
-
 	// remove the p from around imgs (http://css-tricks.com/snippets/wordpress/remove-paragraph-tags-from-around-images/)
 	function bones_filter_ptags_on_images($content){
 		return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
 	}
+
 	
-	/* Load custom scripts and styles */
-	function cbo_scripts_and_styles() {
-		if (!is_admin()) {
-			wp_register_style(
-				'bones-stylesheet',
-				get_stylesheet_directory_uri() . '/library/css/style.css',
-				array(),
-				'screen,print'
-			);
-
-			wp_enqueue_style( 'bones-stylesheet' );
-		}
-	}
-
 	/* Add defer attr on scripts */
 	function cbo_add_defer_attribute($tag, $handle) {
 		if (is_admin() || (
-				// 'jquery-core' !== $handle &&
-				// 'jquery-migrate' !== $handle &&
 				'bones-scripts' !== $handle &&
-				'contact-form-7' !== $handle &&
 				'wp-polyfill' !== $handle &&
 				'regenerator-runtime' !== $handle ))
 			return $tag;
@@ -125,25 +102,32 @@
 	function smartwp_remove_wp_block_library_css(){
 		wp_dequeue_style( 'wp-block-library' );
 		wp_dequeue_style( 'wp-block-library-theme' );
-		wp_dequeue_style( 'wc-blocks-style' ); // Remove WooCommerce block CSS
 	} 
 	add_action( 'wp_enqueue_scripts', 'smartwp_remove_wp_block_library_css', 100 );
 
-	/* Remove useless styles */
-
-	// remove Block library styles
-	function blocklibrary_deregister_styles() {
-		wp_deregister_style( 'wp-block-library' );
+	function dequeue_classic_theme_styles_css() {
+		wp_dequeue_style('classic-theme-styles');
+		wp_deregister_style('classic-theme-styles');
 	}
+	add_action('wp_enqueue_scripts', 'dequeue_classic_theme_styles_css', 100);
 
-	// remove cf7 styles
-	function cf7_deregister_styles() {
-		wp_deregister_style( 'contact-form-7' );
+	function dequeue_global_styles_css() {
+		wp_dequeue_style('global-styles');
+		wp_deregister_style('global-styles');
 	}
+	add_action('wp_enqueue_scripts', 'dequeue_global_styles_css', 100);
 
-	function social_warfare_block_deregister_styles() {
-		wp_deregister_style( 'social_warfare' );
+	function dequeue_wp_block_library_css() {
+		wp_dequeue_style('wp-block-library');
+		wp_deregister_style('wp-block-library');
 	}
+	add_action('wp_enqueue_scripts', 'dequeue_wp_block_library_css', 100);
+
+	function dequeue_contact_form_7_css() {
+		wp_dequeue_style('contact-form-7');
+		wp_deregister_style('contact-form-7');
+	}
+	add_action('wp_enqueue_scripts', 'dequeue_contact_form_7_css', 100);
 
 
 	/* --------------------------
@@ -153,15 +137,5 @@
 	add_filter( 'the_generator', 'cbo_remove_rss_version' );
 	// Remove pesky injected css for recent comments widget
 	add_filter( 'wp_head', 'bones_remove_wp_widget_recent_comments_style', 1 );
-	// Clean up comment styles in the head
- 	 add_action( 'wp_head', 'bones_remove_recent_comments_style', 1 );
-	// Clean up gallery output in wp
-	add_filter( 'gallery_style', 'cbo_remove_gallery_style' );
-	// Remove Block library styles
-	add_action( 'wp_print_styles', 'blocklibrary_deregister_styles', 100 );
-	// Remove CF7 styles
-	add_action( 'wp_print_styles', 'cf7_deregister_styles', 100 );
-	// Remove Social Warfare styles
-	add_action( 'wp_print_styles', 'social_warfare_block_deregister_styles', 100 );
 	// launching this stuff after theme setup
 	bones_theme_support();

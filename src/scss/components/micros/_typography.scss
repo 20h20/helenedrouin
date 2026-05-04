@@ -2,67 +2,127 @@
 TYPOGRAPHY
 ------------------------------- */
 @font-face {
-    font-family: 'Open Sans';
-    src: url('../fonts/opensans/OpenSans-Bold.woff2') format('woff2'),
-        url('../fonts/opensans/OpenSans-Bold.woff') format('woff');
+    font-family: 'Cormorant Garamond';
+    src: url('../fonts/CormorantGaramond-Bold.woff2') format('woff2'),
+        url('../fonts/CormorantGaramond-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
 }
+
 @font-face {
-    font-family: 'Open Sans';
-    src: url('../fonts/opensans/OpenSans-Regular.woff2') format('woff2'),
-        url('../fonts/opensans/OpenSans-Regular.woff') format('woff');
+    font-family: 'Cormorant Garamond';
+    src: url('../fonts/CormorantGaramond-Light.woff2') format('woff2'),
+        url('../fonts/CormorantGaramond-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('../fonts/CormorantGaramond-Regular.woff2') format('woff2'),
+        url('../fonts/CormorantGaramond-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
-a{
-	text-decoration: none;
+
+@font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('../fonts/CormorantGaramond-SemiBold.woff2') format('woff2'),
+        url('../fonts/CormorantGaramond-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
 }
+
 ul{
-	list-style-type: none;
-	padding: 0;
+	margin:0;
+	padding:0;
+	
+	li{
+		list-style-type: none; 
+	}
+}
+
+a{
+	text-decoration:none;
+}
+
+.cbo-title-1, .cbo-title-1 h1, .cbo-title-1 h2, .cbo-title-1 h3, .cbo-title-1 h4.cbo-title-1 h5, .cbo-title-1 p, .cbo-cms h1
+.cbo-title-2, .cbo-title-2 h1, .cbo-title-2 h2, .cbo-title-2 h3, .cbo-title-2 h4.cbo-title-2 h5, .cbo-title-2 p, .cbo-cms h2,
+.cbo-title-3, .cbo-title-3 h1, .cbo-title-3 h2, .cbo-title-3 h3, .cbo-title-3 h4.cbo-title-3 h5, .cbo-title-3 p, .cbo-cms h3,
+.cbo-title-4, .cbo-title-4 h1, .cbo-title-4 h2, .cbo-title-4 h3, .cbo-title-4 h4.cbo-title-4 h5, .cbo-title-4 p, .cbo-cms h4{
 	margin: 0;
+	position: relative;
+	z-index: 1;
 }
-h1,h2,h3,h4,h5,h6{
-	font-family: 'Open Sans';
-	font-weight: normal;
-	margin-top: 0;
-}
-.cbo-title-1 ,
-.cbo-title-1 h1, .cbo-title-1 h2, .cbo-title-1 h3, .cbo-title-1 h4{
-	font-size: 34px;
-	line-height: 36px;
-	text-align: center;
-	margin-bottom: 30px;
-}
-.cbo-title-2,
-.cbo-title-2 h1, .cbo-title-2 h2, .cbo-title-2 h3, .cbo-title-2 h4{
-	font-size: 26px;
-	line-height: 28px;
+
+.cbo-title-1, .cbo-title-1 h1, .cbo-title-1 h2, .cbo-title-1 h3, .cbo-title-1 h4.cbo-title-1 h5, .cbo-title-1 p, .cbo-cms h1{
+	letter-spacing: 0.15em;
+	font-size: 1.875rem;
+	line-height: 1.25;
 	text-transform: uppercase;
-	text-align: center;
-	margin-bottom: 30px;
+	font-weight: 700;
+
+	.cbo-underline{
+		&:after{
+			height: calc(100% - 1rem);
+		}
+	}
 }
-.title--pink{
-	color: $colorpink;
+
+.cbo-title-2, .cbo-title-2 h1, .cbo-title-2 h2, .cbo-title-2 h3, .cbo-title-2 h4.cbo-title-2 h5, .cbo-title-2 p, .cbo-cms h2{
+	font-size: 2.25rem;
+	line-height: 2.5rem;
+	font-weight: 300;
 }
-.cbo-chapo{
-	text-align: center;
-	max-width: 680px;
-	margin: 0 auto 30px auto;
+
+.cbo-title-3, .cbo-title-3 h1, .cbo-title-3 h2, .cbo-title-3 h3, .cbo-title-3 h4.cbo-title-3 h5, .cbo-title-3 p, .cbo-cms h3{
+	font-size: 1.5rem;
+	line-height: 2rem;
+	font-weight: 600;
 }
+
+.cbo-title-4, .cbo-title-4 h1, .cbo-title-4 h2, .cbo-title-4 h3, .cbo-title-4 h4.cbo-title-4 h5, .cbo-title-4 p, .cbo-cms h4{
+	font-size: 1.125rem;
+	line-height: 1.75rem;
+	font-weight: 600;
+}
+
+.cbo-subtitle{
+	color: $colorbluemedium;
+	font-size: 1.125rem;
+	line-height: 1.75rem;
+}
+
+.cbo-underline{
+	position: relative;
+
+	&:after{
+		content: '';
+		background: linear-gradient(90deg, $colorgold 0%, $colorgoldlight 100%);
+		position: absolute;
+		left: -0.5rem;
+		right: -0.5rem;
+		bottom: 0.25rem;
+		z-index: -1;
+		width: calc(100% - -1rem);
+		height: 1.25rem;
+	}
+}
+
 .cbo-cms{
 	h1,h2,h3,h4,h5{
-		margin: 40px 0 14px 0;
+		margin: 4rem 0 2rem 0;
 
 		&:first-child{
 			margin-top: 0;
 		}
 	}
 	p{
-		margin: 14px 0;
+		margin: 0.875rem 0;
 
 		&:last-child{
 			margin-bottom: 0;
@@ -71,73 +131,52 @@ h1,h2,h3,h4,h5,h6{
 			margin-top: 0;
 		}
 	}
-	ul{
-		li{
-			position: relative;
-			display: flex;
-			margin-bottom: 14px;
 
-			&:last-child{
-				padding-bottom: 0;
-			}
-			&:before{
-				font-family:"icons";
-				content: '\f102';
-				color: $colorpink;
-				position: relative;
-				margin-right: 6px;
-			}
-		}
+	a:not(.cbo-button){
+		color:$colorgold;
+		text-decoration:underline;
 	}
-	a{
-		&:not(.cbo-button){
-			color: $colorblack;
-			text-decoration: underline;
-			transition: all .4s;
-
-			&:hover{
-				opacity: 0.7;
-			}
-		}
-	}
-	iframe{
-		margin: 0 auto;
-		display: block;
-		margin-top: 30px;
-		margin-bottom: 30px;
+	.cbo-button{
+		margin-top: 2.5rem;
 	}
 	img{
-		max-width: 100%;
-		height: auto;
-		margin: 0 auto;
-		margin-top: 30px;
 		display: block;
-		border-radius: 20px;
-		overflow: hidden;
+		margin: 0 auto;
 	}
-	blockquote{
-		margin: 0;
-		background: rgba($colorpink, .3);
-		border-radius: 5px;
-		padding: 10px;
-		margin-bottom: 30px;
-		text-align: center;
-		font-style: italic;
-		font-weight: bold;
+	hr{
+		border: 0;
+		border-bottom: 0.0625rem solid rgba($colorbluedark, .2);
+		margin: 3.125rem 0;
+	}
+	ul{
+		li{
+			position:relative;
+			padding-left: 1rem;
+
+			&:before{
+				content:'';
+				width:0.25rem;
+				height:0.25rem;
+				border-radius:50%;
+				box-shadow:0rem 0rem 0rem 0.125rem $colorgold;
+				position:absolute;
+				top:0.625rem;
+				left:0;
+			}
+		}
 	}
 }
+
 /* -------------------------------
-MEDIUM SCREENS
+LARGE SCREENS
 ------------------------------- */
-@media (min-width: $screen-md-min){
-	.cbo-title-1,
-	.cbo-title-1 h1, .cbo-title-1 h2, .cbo-title-1 h3, .cbo-title-1 h4{
-		font-size: 56px;
-		line-height: 58px;
+@media (min-width: $screen-md-min) {
+	.cbo-title-1, .cbo-title-1 h1, .cbo-title-1 h2, .cbo-title-1 h3, .cbo-title-1 h4.cbo-title-1 h5, .cbo-title-1 p, .cbo-cms h1{
+		font-size: 3.75rem;
+    	line-height: 1;
 	}
-	.cbo-title-2,
-	.cbo-title-2 h1, .cbo-title-2 h2, .cbo-title-2 h3, .cbo-title-2 h4{
-		font-size: 30px;
-		line-height: 32px;
+	.cbo-title-2, .cbo-title-2 h1, .cbo-title-2 h2, .cbo-title-2 h3, .cbo-title-2 h4.cbo-title-2 h5, .cbo-title-2 p, .cbo-cms h2{
+		font-size: 3rem;
+    	line-height: 1;
 	}
 }

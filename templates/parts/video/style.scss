@@ -1,0 +1,101 @@
+@import "../../../src/scss/partials/variables";
+
+/* -------------------------------
+VIDEO MICRO COMPONENT
+------------------------------- */
+.videoslist-list{
+	.list-el{
+		margin: 1.25rem 0;
+
+		.el-inner{
+			text-align: center;
+			color: $colorbluedark;
+
+			.inner-picture{
+				margin-bottom: 1rem;
+				border-right: 0.1875rem solid $colorbluemedium;
+				border-bottom: 0.1875rem solid $colorbluemedium;
+				overflow: hidden;
+				border-radius: $bordersmall;
+				aspect-ratio: 16 / 9;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				.picture-player{
+					position: absolute;
+					width: 3.5rem;
+					height: 3.5rem;
+					border-radius: 99rem;
+					background-color: rgba($colorwhite, .9);
+					z-index: 2;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+
+					&:before{
+						font-size: 1.25rem;
+					}
+				}
+			}
+			.inner-content{
+				display: block;
+
+				.content-date{
+					color: $colorbluemedium;
+					display: block;
+					font-size: 0.875rem;
+					line-height: 1.25rem;
+				}
+			}
+		}
+	}
+}
+
+/* -------------------------------
+SMALL SCREENS
+------------------------------- */
+@media (min-width: $screen-sm-min){
+	.videoslist-list{
+		.list-el{
+			width: 50%;
+			padding: 0 1rem;
+			margin: 1rem 0;
+		}
+	}
+}
+
+/* -------------------------------
+MEDIUM SCREENS
+------------------------------- */
+@media (min-width: $screen-md-min){
+	.videoslist-list{
+		.list-el{
+			width: 33.333333%;
+
+			.el-inner{
+				.inner-picture{
+					.picture-player{
+						transition: all .4s cubic-bezier(.694,.048,.335,1);
+					}
+					img{
+						transition: all .4s cubic-bezier(.694,.048,.335,1);
+					}
+				}
+			}
+			&:hover{
+				.el-inner{
+					.inner-picture{
+						.picture-player{
+							background-color: rgba($colorbluedark, 1);
+							color: $colorwhite;
+						}
+						img{
+							transform: scale(1.2);
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,58 +1,37 @@
 /******************************************************************
+Site Name: HS2
 Author: Julien B.
 ******************************************************************/
-
 /*********************
-IMPORTING PARTIALS
+PARTIALS
 *********************/
 @import "partials/variables";
 @import "partials/icons";
 
 /*********************
 STUCTURE COMPONENTS
-*********************/  
-@import "components/structure/base";
-@import "components/structure/header";
-@import "components/structure/footer";
-
-/*********************
-LAYOUTS COMPONENTS
 *********************/
-@import "components/layouts/blocspicture";
-@import "components/layouts/colpictures";
-@import "components/layouts/contact";
-@import "components/layouts/galerie";
-@import "components/layouts/hero";
-@import "components/layouts/keynumber";
-@import "components/layouts/picture";
-@import "components/layouts/partners";
-@import "components/layouts/tableau";
-@import "components/layouts/textpicture";
-@import "components/layouts/text";
-@import "components/layouts/testimonialslist";
-@import "components/layouts/video";
+@import "components/structure/base";
+@import "components/structure/footer";
+@import "components/structure/header";
 
 /*********************
 MICRO COMPONENTS
 *********************/
-@import "components/micros/articles";
-@import "components/micros/back-office";
-@import "components/micros/buttons";
-@import "components/micros/connexion";
 @import "components/micros/container";
+@import "components/micros/buttons";
+@import "components/micros/form";
 @import "components/micros/lightbox";
+@import "components/micros/login";
+@import "components/micros/modale";
 @import "components/micros/pictures";
-@import "components/micros/rgpd";
-@import "components/micros/slick";
+@import "components/micros/slider";
 @import "components/micros/typography";
+
 
 /*********************
 BACK END REMOVE
 *********************/
 .cbo-main{
-    @import "partials/_animations";
-}
-.cbo-main,
-.acfe-flexible-placeholder{
-    @import "components/micros/form";
+    @import "partials/animations";
 }
