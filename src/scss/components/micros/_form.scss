@@ -62,7 +62,12 @@ FORM MICRO COMPONENT
 			font-size: 0.875rem;
 			font-weight: 300;
 		}
-		
+		.cf-turnstile{
+			order: 2;
+		}
+		.field--submit{
+			order: 3;
+		}
 		.hidden-fields-container{
 			display: none;
 		}

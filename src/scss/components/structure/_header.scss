@@ -7,22 +7,53 @@ header{
 	top:0;
 	left:0;
 	width:100%;
-	padding: 0.625rem 0;
+	padding: 0 0 0.625rem 0;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	flex-wrap: wrap;
 	background: rgba($colorgoldmedium, .0);
 	transition:all .4s cubic-bezier(.694,.048,.335,1);
 
 	&.header-scroll{
-		background: rgba($colorgold, 1);
+		background: rgba($colorgoldmedium, 1);
 		box-shadow: 0 0.375rem 1.5rem rgba($colorblack, 0.3);
+
+		.header-logo{
+			color: $colorbluedark;
+		}
+		.header-content{
+			.header-nav {
+				ul {
+					li {
+						a{
+							color: $colorbluedark;
+						}
+					}
+				}
+			}
+			.languages-switcher{
+				border-left: .0625rem solid $colorbluedark;
+
+				li {
+					a{
+						color: rgba($colorbluedark,.5);
+					}
+					&.current-lang{
+						a{
+							color: $colorbluedark;
+						}
+					}
+				}
+			}
+		}
 	}
 	.header-inner{
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		width: 100%;
+		padding-top: 0.625rem;
 	}
 	.header-logo{
 		color: $colorwhite;
@@ -95,6 +126,7 @@ header{
 
 				a{
 					color:rgba($colorwhite, .5);
+					transition:all .4s cubic-bezier(.694,.048,.335,1);
 				}
 				&.current-lang{
 					a{
@@ -161,8 +193,16 @@ SMALL SCREENS
 ------------------------------- */
 @media (min-width: $screen-sm-min){
 	header{
-		padding: 1rem 0;
+		padding: 0 0 1rem 0;
 
+		.header-inner{
+			padding-top: 1rem;
+		}
+		.header-logo{
+			&:hover{
+				color: $colorwhite;
+			}
+		}
 		.header-content{
 			display: flex;
 			align-items: center;
@@ -172,6 +212,14 @@ SMALL SCREENS
 			}
 			.languages-switcher{
 				margin-left: 2rem;
+
+				li{
+					a{
+						&:hover{
+							color:rgba($colorwhite, 1);
+						}
+					}
+				}
 			}
 			.header-nav{
 				transform: translate(0);
@@ -189,21 +237,41 @@ SMALL SCREENS
 						display:inline-block;
 						border-bottom: 0rem;
 						margin: 0 0.875rem;
+						transition:all .4s cubic-bezier(.694,.048,.335,1);
 
 						a{
 							color: $colorwhite;
 							padding: 0;
 							display: flex;
 							align-items: center;
+							position: relative;
 							transition:all .4s cubic-bezier(.694,.048,.335,1);
 
-							&:hover{
-								color: $colorgold
-;							}
+							&:before{
+								content: "";
+								background-color: $colorwhite;
+								position: absolute;
+								left: 0;
+								right: 0;
+								top: -0.375rem;
+								height: 0.0625rem;
+								transition: transform .3s;
+								transition-timing-function: ease, ease;
+								transform: scaleX(0);
+								transform-origin: center center;
+								z-index: -1;
+							}
 						}
+
+
+						&:hover,
 						&.current-menu-item {
 							a{
-								color: $colorbluedark;
+								color: $colorwhite;
+
+								&:before{
+									transform: scaleX(1);
+								}
 							}
 						}
 					}

@@ -4,6 +4,9 @@
 TEXT PICTURE COMPONENT
 ------------------------------- */
 .cbo-textpicture {
+  .textpicture-inner{
+    overflow: hidden;
+  }
   .textpicture-picture{
     margin-bottom: 3rem;
     width: 100%;

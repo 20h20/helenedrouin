@@ -13,11 +13,21 @@
 		<link rel="icon" type="image/png" sizes="32x32" href="<?php echo $theme_uri; ?>/library/images/fav/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="<?php echo $theme_uri; ?>/library/images/fav/favicon-16x16.png">
 		<?php wp_head(); ?>
+
+		<?php
+			$addstrip	= get_field('option_addstrip', 'option');
+		?>
 	</head>
 
 	<body <?php body_class('cbo-main'); ?> itemscope itemtype="http://schema.org/WebPage">
 
 		<header role="banner" itemscope itemtype="http://schema.org/WPHeader">
+			<?php
+				if ($addstrip == 1):
+					get_template_part('templates/parts/stripnews/template'); 
+				endif;
+			?>
+
 			<div class="header-inner cbo-container container--nomargin">
 				<a
 					class="header-logo"

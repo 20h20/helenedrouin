@@ -55,9 +55,9 @@
 		&:before{
 			content: "\f101";
 			font-family: icons;
-			font-size: 20px;
-			width: 50px;
-			height: 50px;
+			font-size: 1.25rem;
+			width: 3.125rem;
+			height: 3.125rem;
 			border-radius: 50%;
 			color: $colorwhite;
 			position: absolute;
@@ -80,7 +80,7 @@
 		
 		&:before{
 			transform: rotate(180deg);
-			left: 20px;
+			left: 1.25rem;
 		}
 		
 	}
@@ -89,7 +89,7 @@
 		right: 0;
 		
 		&:before{
-			right: 20px;
+			right: 1.25rem;
 		}
 		
 	}
@@ -97,10 +97,10 @@
 }
 .fancybox-close {
 	position: absolute;
-	top: 25px;
-	right: 25px;
-	width: 40px;
-	height: 40px;
+	top: 1.5625rem;
+	right: 1.5625rem;
+	width: 2.5rem;
+	height: 2.5rem;
 	border-radius: 50%;
 	position: absolute;
 	cursor: pointer;
@@ -111,23 +111,23 @@
 		content: '';
 		display: block;
 		position: absolute;
-		width: 32px;
-		height: 3px;
-		border-radius: 1.5px;
+		width: 2rem;
+		height: 0.1875rem;
+		border-radius: 0.0938rem;
 		background: $colorwhite;
 		top: 50%;
 		left: 50%;
-		margin-left: -16px;
-		margin-top: -1.5px;
+		margin-left: -1rem;
+		margin-top: -0.0938rem;
 		transition: .5s $easeinout;		
 	}
 	&:before{
 		transform: rotate3d(0, 0, 1, 45deg);
-		transform-origin: 50% 50% 0px;
+		transform-origin: 50% 50% 0;
 	}
 	&:after{
 		transform: rotate3d(0, 0, 1, -45deg);
-		transform-origin: 50% 50% 0px;
+		transform-origin: 50% 50% 0;
 	}
 	&:hover{
 		background: $colorwhite;

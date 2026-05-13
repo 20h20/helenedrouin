@@ -15,20 +15,20 @@ CONNEXION COMPONENT
 		a{
 			background: url("../images/logo-helenedrouin.png") no-repeat center;
 			background-size: contain;
-			width: 200px;
+			width: 12.5rem;
 		}
 	}
 	form .input{
-		border:1px solid $colorbluedark;
+		border:0.0625rem solid $colorbluedark;
 	}
 	.button.button-large{
 		background: $colorgold;
-		border: 0px;
-		margin-top: 30px;
+		border: 0;
+		margin-top: 1.875rem;
 		width: 100%;
 	}
 	form .input{
-		border-radius: 0px;
+		border-radius: 0;
 	}
 	.language-switcher{
 		display: none;

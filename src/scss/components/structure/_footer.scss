@@ -7,8 +7,12 @@ footer{
 	
 	a{
 		color: $colorbluedark;
-	}
+		transition:all .4s cubic-bezier(.694,.048,.335,1);
 
+		&:hover{
+			color: $colorwhite;
+		}
+	}
 	.footer-inner.cbo-container{
 		padding-top: 3rem;
 		padding-bottom: 3rem;

@@ -36,8 +36,7 @@
 		<div class='inside-content'>
 			<strong>Bonjour $first_name, content de vous revoir 👋</strong>
 			<p>Bienvenue sur le back-office de votre site internet.</p>
-		</div>
-		<a class='cbo-button' href='https://trello.com/b/5UN0GIv5/hs2' target='_blank'>Suivi de vos tickets</a>";
+		</div>";
 	}
 
 
@@ -133,7 +132,7 @@
 
 	// Affichage des modifications via Git
 	function render_custom_git_commits_dashboard_widget() {
-		$api_url = 'https://api.github.com/repos/20h20/hs2/commits?sha=develop&per_page=5';
+		$api_url = 'https://api.github.com/repos/20h20/helenedrouin/commits?sha=develop&per_page=5';
 
 		if (!defined('GITHUB_TOKEN')) {
 			echo '<p>Token GitHub non défini.</p>';
