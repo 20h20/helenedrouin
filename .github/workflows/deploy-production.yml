@@ -21,7 +21,7 @@ jobs:
           server: ftp.cluster129.hosting.ovh.net
           username: ${{ secrets.FTP_PROD_USERNAME }}
           password: ${{ secrets.FTP_PROD_PASSWORD }}
-          protocol: ftps
+          protocol: ftp
           port: 21
           local-dir: ./
           server-dir: /www/wp-content/themes/helenedrouin/
