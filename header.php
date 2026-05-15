@@ -19,7 +19,7 @@
 		?>
 	</head>
 
-	<body <?php body_class('cbo-main test'); ?> itemscope itemtype="http://schema.org/WebPage">
+	<body <?php body_class('cbo-main'); ?> itemscope itemtype="http://schema.org/WebPage">
 
 		<header role="banner" itemscope itemtype="http://schema.org/WPHeader">
 			<?php
