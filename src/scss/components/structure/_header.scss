@@ -149,7 +149,7 @@ header{
 			flex-direction: column;
 			justify-content: space-between;
 			overflow-y: auto;
-			background:$colorwhite;
+			background: rgba($colorgoldmedium, 1);
 			width: 12.5rem;
 			position: fixed;
 			top: 0;
@@ -165,7 +165,7 @@ header{
 
 			ul{
 				li{
-					border-bottom:0.0625rem solid $colorbluelight;
+					border-bottom:0.0625rem solid $colorbluedark;
 					position: relative;
 					text-transform: uppercase;
 
