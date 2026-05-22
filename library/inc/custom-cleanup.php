@@ -77,7 +77,8 @@
 	
 	/* Add defer attr on scripts */
 	function cbo_add_defer_attribute($tag, $handle) {
-		if (is_admin() || 'cbo-scripts' !== $handle)
+		$deferred = ['cbo-scripts', 'jquery', 'jquery-core', 'jquery-migrate'];
+		if (is_admin() || !in_array($handle, $deferred))
 			return $tag;
 
 		return str_replace( ' src', ' defer="defer" src', $tag );
