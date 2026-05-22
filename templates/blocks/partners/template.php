@@ -20,12 +20,11 @@
 				<div class="list-el">
 					<div class="el-inner cbo-picture-contain slide-up">
 						<img
-							src="<?php echo esc_url($logo['sizes']['small']); ?>"
-							srcset="<?php echo esc_url($logo['sizes']['small']); ?> 320w, 
-								<?php echo esc_url($logo['sizes']['small']); ?> 768w, 
-								<?php echo esc_url($logo['sizes']['small']); ?> 1024w"
-							alt="<?php echo esc_url($logo['alt']); ?>"
-							sizes="(min-width: 1024px) 50vw, (min-width: 768px) 60vw, 100vw"
+							src="<?php echo esc_url($logo['sizes']['xsmall']); ?>"
+							srcset="<?php echo esc_url($logo['sizes']['xsmall']); ?> 320w,
+								<?php echo esc_url($logo['sizes']['small']); ?> 768w"
+							alt="<?php echo esc_attr($logo['alt']); ?>"
+							sizes="(min-width: 991px) 16vw, (min-width: 767px) 20vw, (min-width: 500px) 25vw, 33vw"
 							loading="lazy"
 							decoding="async"
 						>

@@ -77,10 +77,7 @@
 	
 	/* Add defer attr on scripts */
 	function cbo_add_defer_attribute($tag, $handle) {
-		if (is_admin() || (
-				'bones-scripts' !== $handle &&
-				'wp-polyfill' !== $handle &&
-				'regenerator-runtime' !== $handle ))
+		if (is_admin() || 'cbo-scripts' !== $handle)
 			return $tag;
 
 		return str_replace( ' src', ' defer="defer" src', $tag );

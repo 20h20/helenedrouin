@@ -1,4 +1,3 @@
-/*include /libs/jquery.core.js*/
 /*include /libs/slick.js*/
 /*include /libs/jquery.fancybox.js*/
 

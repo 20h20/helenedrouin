@@ -49,6 +49,16 @@
 			$css_blocks_path = get_stylesheet_directory() . '/library/css/blocks/';
 			$css_blocks_url  = get_stylesheet_directory_uri() . '/library/css/blocks/';
 
+			/* Charger le JS */
+			$js_file = get_stylesheet_directory() . '/library/js/scripts.js';
+			wp_enqueue_script(
+				'cbo-scripts',
+				get_stylesheet_directory_uri() . '/library/js/scripts.js',
+				['jquery'],
+				file_exists($js_file) ? filemtime($js_file) : null,
+				true
+			);
+
 			/* Charger les styles globaux */
 			$global_css_file = get_stylesheet_directory() . '/library/css/style.min.css';
 

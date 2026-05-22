@@ -14,9 +14,9 @@ $picture	= get_field('textpicture_picture');
 
 		<figure class="textpicture-picture cbo-picture-cover <?php echo ($picturepos === 'right') ? 'slide-left' : 'slide-right'; ?>" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
 			<img
-				src="<?php echo esc_url($picture['sizes']['medium']); ?>"
-				srcset="<?php echo esc_url($picture['sizes']['medium']); ?> 320w, <?php echo esc_url($picture['sizes']['large']); ?> 768w, <?php echo esc_url($picture['sizes']['xlarge']); ?> 1024w"
-				sizes="100vw"
+				src="<?php echo esc_url($picture['sizes']['small']); ?>"
+				srcset="<?php echo esc_url($picture['sizes']['xsmall']); ?> 320w, <?php echo esc_url($picture['sizes']['small']); ?> 768w, <?php echo esc_url($picture['sizes']['medium']); ?> 1200w"
+				sizes="(min-width: 768px) 50vw, 100vw"
 				alt="<?php echo esc_attr($picture['alt']); ?>"
 				width="<?php echo esc_attr($picture['width']); ?>"
 				height="<?php echo esc_attr($picture['height']); ?>"

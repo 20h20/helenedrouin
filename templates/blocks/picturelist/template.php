@@ -15,9 +15,9 @@
 						<span class="inner-picture cbo-picture-cover slide-up">
 							<img
 								decoding="async"
-								src="<?php echo $picture['sizes']['small']; ?>"
-								srcset="<?php echo $picture['sizes']['small']; ?> 320w, <?php echo $picture['sizes']['medium']; ?> 768w, <?php echo $picture['sizes']['medium']; ?> 1024w"
-								alt="<?php echo $picture['alt']; ?>" sizes="100vw"
+								src="<?php echo esc_url($picture['sizes']['xsmall']); ?>"
+								srcset="<?php echo esc_url($picture['sizes']['xsmall']); ?> 320w, <?php echo esc_url($picture['sizes']['small']); ?> 768w, <?php echo esc_url($picture['sizes']['medium']); ?> 1200w"
+								alt="<?php echo esc_attr($picture['alt']); ?>" sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
 								loading="lazy"
 								width="600" height="600"
 							>
