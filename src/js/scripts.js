@@ -119,28 +119,41 @@
 
 
 			//////////////// SCROLL ANIMATIONS ////////////////
-			var scroll = window.requestAnimationFrame || function(callback){ window.setTimeout(callback, 1000/60)};
-			var elementsToShow = document.querySelectorAll('.slide-up, .slide-up, .slide-right, .slide-left, .scale-up, .scale-down'); 
-			function loop() {
-				Array.prototype.forEach.call(elementsToShow, function(element){
-					if (isElementInViewport(element)) {
-						element.classList.add('anim-scroll');
-					} else {
-						element.classList.remove('anim-scroll');
-					}
-				});
-				scroll(loop);
-			}	
-			loop();
-			function isElementInViewport(el) {
-				if (typeof jQuery === "function" && el instanceof jQuery) {
-					el = el[0];
-				}
-				var rect = el.getBoundingClientRect();
-				return (
-					(rect.top <= 0&& rect.bottom >= 0)||(rect.bottom >= (window.innerHeight || document.documentElement.clientHeight) && rect.top <= (window.innerHeight || document.documentElement.clientHeight))||(rect.top >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight))
-				);
+			var elementsToShow = document.querySelectorAll('.slide-up, .slide-right, .slide-left, .scale-up, .scale-down');
+			if ('IntersectionObserver' in window && elementsToShow.length) {
+				var animObserver = new IntersectionObserver(function(entries) {
+					entries.forEach(function(entry) {
+						entry.target.classList.toggle('anim-scroll', entry.isIntersecting);
+					});
+				}, { threshold: 0.15 });
+				elementsToShow.forEach(function(el) { animObserver.observe(el); });
+			} else {
+				elementsToShow.forEach(function(el) { el.classList.add('anim-scroll'); });
 			}
+
+
+			//////////////// STICKY + HERO PARALLAX (listener passif unifié) ////////////////
+			var headerEl = document.querySelector('header');
+			var scrollTicking = false;
+			var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+			var heroEl = document.querySelector('.cbo-hero');
+			var heroImgEl = heroEl ? heroEl.querySelector('.inner-picture img') : null;
+
+			function onScrollFrame() {
+				var scrollY = window.scrollY || window.pageYOffset;
+				if (headerEl) headerEl.classList.toggle('header-scroll', scrollY > 80);
+				if (!prefersReducedMotion && heroImgEl && scrollY <= heroEl.offsetHeight) {
+					heroImgEl.style.transform = 'translateY(' + (-scrollY * 0.3) + 'px)';
+				}
+				scrollTicking = false;
+			}
+			window.addEventListener('scroll', function() {
+				if (!scrollTicking) {
+					window.requestAnimationFrame(onScrollFrame);
+					scrollTicking = true;
+				}
+			}, { passive: true });
+			onScrollFrame();
 
 
 			/////////////////// SMARTPHONE NAVIGATION ///////////////////
@@ -165,15 +178,6 @@
 			}
 
 
-			//////////////// STICKY ////////////////
-			$(window).scroll(function(){
-				if($(window).scrollTop()>80){
-					$("header").addClass('header-scroll');
-				}else{
-					$("header").removeClass('header-scroll');
-				}
-			})
-			.scroll();			
 		},
 
 		onload : function(){
@@ -184,25 +188,11 @@
 
 		},
 
-		onscroll : function(){
-			//////////////// HERO PARALLAX ////////////////
-			if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-				var hero = document.querySelector('.cbo-hero');
-				if (hero) {
-					var heroImg = hero.querySelector('.inner-picture img');
-					var scrollY = window.scrollY || window.pageYOffset;
-					if (heroImg && scrollY <= hero.offsetHeight) {
-						heroImg.style.transform = 'translateY(' + (-scrollY * 0.3) + 'px)';
-					}
-				}
-			}
-		},
-	
 	};
 
 	$(document).ready( function(){
 		Master.onready();
-		
+
 	});
 
 	$(window).load( function(){
@@ -211,10 +201,6 @@
 
 	$(window).resize( function(){
 		Master.onresize();
-	});
-
-	$(window).on('scroll', function(){
-		Master.onscroll();
 	});
 
 })(jQuery);

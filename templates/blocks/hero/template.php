@@ -13,13 +13,13 @@ $picturephone	= get_field('hero_picturephone');
 				<?php if($picturephone): ?>
 					<source
 						media="(max-width: 767px)"
-						srcset="<?php echo esc_attr($picturephone['sizes']['small']); ?> 320w, <?php echo esc_attr($picturephone['sizes']['medium']); ?> 768w"
+						srcset="<?php echo esc_attr($picturephone['sizes']['small']); ?> 768w, <?php echo esc_attr($picturephone['sizes']['medium']); ?> 1200w"
 						sizes="100vw"
 					>
 				<?php endif; ?>
 				<img
 					src="<?php echo esc_url($picture['sizes']['small']); ?>"
-					srcset="<?php echo esc_attr($picture['sizes']['small']); ?> 320w, <?php echo esc_attr($picture['sizes']['xlarge']); ?> 768w, <?php echo esc_attr($picture['sizes']['xlarge']); ?> 1024w"
+					srcset="<?php echo esc_attr($picture['sizes']['small']); ?> 768w, <?php echo esc_attr($picture['sizes']['medium']); ?> 1200w, <?php echo esc_attr($picture['sizes']['xlarge']); ?> 1920w"
 					sizes="100vw"
 					alt="<?php echo esc_attr($picture['alt'] ?: $title); ?>"
 					width="<?php echo esc_attr($picture['width']); ?>"

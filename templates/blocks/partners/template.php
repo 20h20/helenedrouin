@@ -25,6 +25,8 @@
 								<?php echo esc_url($logo['sizes']['small']); ?> 768w"
 							alt="<?php echo esc_attr($logo['alt']); ?>"
 							sizes="(min-width: 991px) 16vw, (min-width: 767px) 20vw, (min-width: 500px) 25vw, 33vw"
+							width="<?php echo esc_attr($logo['sizes']['xsmall-width']); ?>"
+							height="<?php echo esc_attr($logo['sizes']['xsmall-height']); ?>"
 							loading="lazy"
 							decoding="async"
 						>

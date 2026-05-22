@@ -128,7 +128,7 @@ module.exports = function (grunt) {
           stylesheet: "scss",
           relativeFontPath: "../iconfont",
           template: "<%= path_src %>scss/partials/_icons-template.scss",
-          types: "eot,woff,ttf,svg",
+          types: "woff2,woff",
           htmlDemo: false,
           optimize: false,
           engine: "node",

@@ -4,11 +4,12 @@
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
 		<link rel="profile" href="http://gmpg.org/xfn/11">
 		<title><?php wp_title(' - '); ?></title>
-		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
-		
+
 		<?php $theme_uri = esc_url(get_template_directory_uri()); ?>
+		<link rel="preload" href="<?php echo $theme_uri; ?>/library/fonts/CormorantGaramond-Bold.woff2" as="font" type="font/woff2" crossorigin>
+		<link rel="preload" href="<?php echo $theme_uri; ?>/library/fonts/CormorantGaramond-Regular.woff2" as="font" type="font/woff2" crossorigin>
 		<link rel="apple-touch-icon" sizes="180x180" href="<?php echo $theme_uri; ?>/library/images/fav/apple-icon-180x180.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="<?php echo $theme_uri; ?>/library/images/fav/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="<?php echo $theme_uri; ?>/library/images/fav/favicon-16x16.png">
