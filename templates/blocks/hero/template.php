@@ -2,23 +2,33 @@
 
 $title	= get_field('hero_title');
 $picture	= get_field('hero_picture');
+$picturephone	= get_field('hero_picturephone');
 
 ?>
 
 <section class="cbo-hero">
 	<div class="hero-inner">
 		<div class="inner-picture cbo-picture-cover">
-			<img
-				src="<?php echo esc_url($picture['sizes']['small']); ?>"
-				srcset="<?php echo esc_attr($picture['sizes']['small']); ?> 320w, <?php echo esc_attr($picture['sizes']['xlarge']); ?> 768w, <?php echo esc_attr($picture['sizes']['xlarge']); ?> 1024w"
-				sizes="100vw"
-				alt="<?php echo esc_attr($picture['alt'] ?: $title); ?>"
-				width="<?php echo esc_attr($picture['width']); ?>"
-				height="<?php echo esc_attr($picture['height']); ?>"
-				decoding="async"
-				loading="eager"
-				fetchpriority="high"
-			>
+			<picture>
+				<?php if($picturephone): ?>
+					<source
+						media="(max-width: 767px)"
+						srcset="<?php echo esc_attr($picturephone['sizes']['small']); ?> 320w, <?php echo esc_attr($picturephone['sizes']['medium']); ?> 768w"
+						sizes="100vw"
+					>
+				<?php endif; ?>
+				<img
+					src="<?php echo esc_url($picture['sizes']['small']); ?>"
+					srcset="<?php echo esc_attr($picture['sizes']['small']); ?> 320w, <?php echo esc_attr($picture['sizes']['xlarge']); ?> 768w, <?php echo esc_attr($picture['sizes']['xlarge']); ?> 1024w"
+					sizes="100vw"
+					alt="<?php echo esc_attr($picture['alt'] ?: $title); ?>"
+					width="<?php echo esc_attr($picture['width']); ?>"
+					height="<?php echo esc_attr($picture['height']); ?>"
+					decoding="async"
+					loading="eager"
+					fetchpriority="high"
+				>
+			</picture>
 		</div>
 
 		<?php if($title): ?>
