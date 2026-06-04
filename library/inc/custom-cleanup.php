@@ -77,14 +77,10 @@
 	
 	/* Add defer attr on scripts */
 	function cbo_add_defer_attribute($tag, $handle) {
-		if (is_admin())
+		if (is_admin() || 'cbo-scripts' !== $handle)
 			return $tag;
 
-		$defer_scripts = ['cbo-scripts', 'jquery', 'jquery-core'];
-		if (in_array($handle, $defer_scripts)) {
-			return str_replace(' src', ' defer="defer" src', $tag);
-		}
-		return $tag;
+		return str_replace( ' src', ' defer="defer" src', $tag );
 	}
 
 	/* Enable custom theme supports */
