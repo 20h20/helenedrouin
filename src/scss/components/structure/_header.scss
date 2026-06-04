@@ -33,15 +33,17 @@ header{
 				}
 			}
 			.languages-switcher{
-				border-left: .0625rem solid $colorbluedark;
+				ul{
+					border-left: .0625rem solid $colorbluedark;
 
-				li {
-					a{
-						color: rgba($colorbluedark,.5);
-					}
-					&.current-lang{
+					li {
 						a{
-							color: $colorbluedark;
+							color: rgba($colorbluedark,.5);
+						}
+						&.current-lang{
+							a{
+								color: $colorbluedark;
+							}
 						}
 					}
 				}
@@ -213,12 +215,14 @@ SMALL SCREENS
 				display: none;
 			}
 			.languages-switcher{
-				margin-left: 2rem;
+				ul{
+					margin-left: 2rem;
 
-				li{
-					a{
-						&:hover{
-							color:rgba($colorwhite, 1);
+					li{
+						a{
+							&:hover{
+								color:rgba($colorwhite, 1);
+							}
 						}
 					}
 				}
