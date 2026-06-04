@@ -71,7 +71,9 @@
 						if ($languages) :
 					?>
 						<nav class="languages-switcher" aria-label="<?php pll_e('Sélecteur de langue') ?>">
-							<?php echo wp_kses_post($languages); ?>
+							<ul>
+								<?php echo wp_kses_post($languages); ?>
+							</ul>
 						</nav>
 					<?php endif; ?>
 				</div>
