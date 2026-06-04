@@ -77,10 +77,14 @@
 	
 	/* Add defer attr on scripts */
 	function cbo_add_defer_attribute($tag, $handle) {
-		if (is_admin() || 'cbo-scripts' !== $handle)
+		if (is_admin())
 			return $tag;
 
-		return str_replace( ' src', ' defer="defer" src', $tag );
+		$defer_scripts = ['cbo-scripts', 'jquery', 'jquery-core'];
+		if (in_array($handle, $defer_scripts)) {
+			return str_replace(' src', ' defer="defer" src', $tag);
+		}
+		return $tag;
 	}
 
 	/* Enable custom theme supports */
@@ -126,6 +130,14 @@
 	}
 	add_action('wp_enqueue_scripts', 'dequeue_contact_form_7_css', 100);
 
+
+	function dequeue_gutenberg_frontend_scripts() {
+		wp_dequeue_script('wp-i18n');
+		wp_dequeue_script('wp-hooks');
+		wp_deregister_script('wp-i18n');
+		wp_deregister_script('wp-hooks');
+	}
+	add_action('wp_enqueue_scripts', 'dequeue_gutenberg_frontend_scripts', 100);
 
 	/* --------------------------
 	   CLEANUP PROCESS
